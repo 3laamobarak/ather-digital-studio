@@ -23,7 +23,7 @@ export function Logo({ className, invert = false }: { className?: string; invert
             invert ? "text-primary-foreground" : "text-ink",
           )}
         >
-          {lang === "ar" ? company.nameAr : company.nameEn}
+          {lang === "ar" ? company.logoNameAr : company.nameEn}
         </span>
         <span
           className={cn(

@@ -35,13 +35,13 @@ function ServicesPage() {
         <div className="container-page">
           <SectionHeading
             center
-            eyebrow={t({ ar: "الخَدَمَات", en: "Services" })}
+            eyebrow={t({ ar: "الخدمات", en: "Services" })}
             title={t({
-              ar: "خَدَمَات مَبْنِيَّة عَلَى تَنْفِيذ حَقِيقِيّ",
+              ar: "خدمات مبنية على تنفيذ حقيقي",
               en: "Services shaped by real delivery work",
             })}
             body={t({
-              ar: "لِكُلِّ خِدْمَة مُخْرَجَات وَاضِحَة تُسَلَّم وَتُخْتَبَر مَعَك خُطْوَة بِخُطْوَة.",
+              ar: "لكل خدمة مخرجات واضحة تسلم وتختبر معك خطوة بخطوة.",
               en: "Each service has clear deliverables that are handed over and tested with you step by step.",
             })}
           />

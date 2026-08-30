@@ -42,13 +42,13 @@ function AboutPage() {
         <div className="container-page grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <SectionHeading
-              eyebrow={t({ ar: "مَنْ نَحْنُ", en: "About us" })}
+              eyebrow={t({ ar: "من نحن", en: "About us" })}
               title={t({
-                ar: "أَثَرْ — فَرِيق يَتْرُك أَثَرًا فِي كُلِّ مَشْرُوع",
+                ar: "أثر — فريق يترك أثرا في كل مشروع",
                 en: "Ather — a team that leaves a mark on every project",
               })}
               body={t({
-                ar: "بَدَأْنَا مِن قِنَا فِي مِصْر بِفِكْرَة بَسِيطَة: أَنَّ صَاحِب الْعَمَل يَحْتَاج شَرِيكًا تَقْنِيًّا يَفْهَم الْبَيْع، لَا مُجَرَّد مَوْقِع جَمِيل. نَعْمَل مَع تُجَّار وَشَرِكَات فِي مِصْر وَالْخَلِيج عَلَى بِنَاء مَتَاجِر وَأَنْظِمَة تُدَار بِسُهُولَة وَتَنْمُو مَعَ نَشَاطِهِم.",
+                ar: "بدأنا من قنا في مصر بفكرة بسيطة: أن صاحب العمل يحتاج شريكا تقنيا يفهم البيع، لا مجرد موقع جميل. نعمل مع تجار وشركات في مصر والخليج على بناء متاجر وأنظمة تدار بسهولة وتنمو مع نشاطهم.",
                 en: "We started in Qena, Egypt with one simple belief: a business owner needs a technical partner who understands selling, not just a pretty website. We work with merchants and companies across Egypt and the Gulf, building stores and systems that are easy to run and grow with the business.",
               })}
             />
@@ -57,7 +57,7 @@ function AboutPage() {
             <div className="absolute -inset-3 -z-10 rounded-3xl bg-accent/10 blur-2xl" />
             <img
               src={aboutImg}
-              alt={t({ ar: "اِسْتِشَارَة مَع عَمِيل", en: "A consultation with a client" })}
+              alt={t({ ar: "استشارة مع عميل", en: "A consultation with a client" })}
               loading="lazy"
               width={1200}
               height={900}
@@ -89,18 +89,18 @@ function AboutPage() {
         <div className="mt-20 grid gap-8 lg:grid-cols-2">
           <Reveal className="ink-panel rounded-3xl p-8">
             <h2 className="text-2xl font-extrabold text-primary-foreground">
-              {t({ ar: "رِسَالَتُنَا", en: "Our mission" })}
+              {t({ ar: "رسالتنا", en: "Our mission" })}
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">
               {t({
-                ar: "أَنْ يَكُون لِكُلِّ نَشَاط تِجَارِيّ فِي الْمِنْطَقَة مَتْجَر إِلِكْتُرُونِيّ يَعْمَل بِكَفَاءَة، بِلُغَة عُمَلَائِه، وَبِوَسَائِل دَفْع وَشَحْن مَوْثُوقَة — دُون تَعْقِيد تَقْنِيّ عَلَى صَاحِب الْعَمَل.",
+                ar: "أن يكون لكل نشاط تجاري في المنطقة متجر إلكتروني يعمل بكفاءة، بلغة عملائه، وبوسائل دفع وشحن موثوقة — دون تعقيد تقني على صاحب العمل.",
                 en: "That every business in the region runs an online store that works properly, speaks its customers' language, and ships and collects money reliably — without pushing technical complexity onto the owner.",
               })}
             </p>
           </Reveal>
           <Reveal delay={80} className="surface-card p-8">
             <h2 className="text-2xl font-extrabold text-ink">
-              {t({ ar: "بَيَانَات التَّوَاصُل", en: "Company details" })}
+              {t({ ar: "بيانات التواصل", en: "Company details" })}
             </h2>
             <ul className="mt-5 space-y-4">
               {contactRows.map((row) => (
