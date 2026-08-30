@@ -40,24 +40,24 @@ function Home() {
             <Reveal>
               <span className="eyebrow">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                {t({ ar: "أَثَرْ لِلْحُلُولِ الْبَرْمَجِيَّة", en: "Ather Software Solutions" })}
+                {t({ ar: "أثر للحلول البرمجية", en: "Ather Software Solutions" })}
               </span>
             </Reveal>
             <Reveal delay={80}>
               <h1 className="mt-5 text-4xl font-extrabold leading-[1.15] text-ink sm:text-5xl lg:text-[3.4rem]">
                 {t({
-                  ar: "نَبْنِي مَتْجَرَك الْإِلِكْتُرُونِيّ",
+                  ar: "نبني متجرك الإلكتروني",
                   en: "We build the online store",
                 })}{" "}
                 <span className="amber-text">
-                  {t({ ar: "وَنُشَغِّلُه بِالْكَامِل", en: "and run it end to end" })}
+                  {t({ ar: "ونشغله بالكامل", en: "and run it end to end" })}
                 </span>
               </h1>
             </Reveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {t({
-                  ar: "مِنَ النِّطَاق وَإِعْدَاد الْمَتْجَر، إِلَى وَسَائِل الدَّفْع وَشَرِكَات الشَّحْن وَرَفْع الْمُنْتَجَات وَالتَّكَامُل مَع أَنْظِمَة إِدَارَة الْمَخْزُون وَالْبَرِيد — نُسَلِّمُك مَتْجَرًا جَاهِزًا لِلْبَيْع.",
+                  ar: "من النطاق وإعداد المتجر، إلى وسائل الدفع وشركات الشحن ورفع المنتجات والتكامل مع أنظمة إدارة المخزون والبريد — نسلمك متجرا جاهزا للبيع.",
                   en: "From domain and store setup to payment gateways, carriers, bulk products and integrations with inventory and mail systems — we hand over a store ready to sell.",
                 })}
               </p>
@@ -70,13 +70,13 @@ function Home() {
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5"
               >
                 <MessageCircle className="h-4 w-4" />
-                {t({ ar: "اِبْدَأ مَشْرُوعَك", en: "Start your project" })}
+                {t({ ar: "ابدأ مشروعك", en: "Start your project" })}
               </a>
               <Link
                 to="/services"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-secondary"
               >
-                {t({ ar: "تَعَرَّفْ عَلَى خَدَمَاتِنَا", en: "Explore services" })}
+                {t({ ar: "تعرف على خدماتنا", en: "Explore services" })}
                 <Arrow className="h-4 w-4" />
               </Link>
             </Reveal>
@@ -91,7 +91,7 @@ function Home() {
             <img
               src={heroImg}
               alt={t({
-                ar: "لَوْحَة تَحَكُّم مَتْجَر إِلِكْتُرُونِيّ عَلَى حَاسُوب وَهَاتِف",
+                ar: "لوحة تحكم متجر إلكتروني على حاسوب وهاتف",
                 en: "E‑commerce dashboard shown on a laptop and phone",
               })}
               width={1600}
@@ -101,7 +101,7 @@ function Home() {
             <div className="surface-card absolute -bottom-6 start-4 hidden items-center gap-3 px-5 py-4 sm:flex">
               <span className="text-2xl font-extrabold text-ink">+150</span>
               <span className="max-w-[9rem] text-xs font-semibold leading-tight text-muted-foreground">
-                {t({ ar: "مَشْرُوع تَمَّ تَسْلِيمُه بِنَجَاح", en: "Projects delivered successfully" })}
+                {t({ ar: "مشروع تم تسليمه بنجاح", en: "Projects delivered successfully" })}
               </span>
             </div>
           </Reveal>
@@ -127,13 +127,13 @@ function Home() {
       {/* Services */}
       <section className="container-page py-20">
         <SectionHeading
-          eyebrow={t({ ar: "خَدَمَاتُنَا", en: "Services" })}
+          eyebrow={t({ ar: "خدماتنا", en: "Services" })}
           title={t({
-            ar: "كُلّ مَا يَحْتَاجُه مَتْجَرُك تَحْتَ سَقْفٍ وَاحِد",
+            ar: "كل ما يحتاجه متجرك تحت سقف واحد",
             en: "Everything your store needs, under one roof",
           })}
           body={t({
-            ar: "نُغَطِّي دَوْرَة حَيَاة الْمَتْجَر كَامِلَة: بِنَاء، تَخْصِيص، تَكَامُل، تَشْغِيل، وَنُمُوّ.",
+            ar: "نغطي دورة حياة المتجر كاملة: بناء، تخصيص، تكامل، تشغيل، ونمو.",
             en: "We cover the full store lifecycle: build, customize, integrate, operate and grow.",
           })}
         />
@@ -182,7 +182,7 @@ function Home() {
             to="/services"
             className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-secondary"
           >
-            {t({ ar: "كُلّ الْخَدَمَات بِالتَّفْصِيل", en: "All services in detail" })}
+            {t({ ar: "كل الخدمات بالتفصيل", en: "All services in detail" })}
             <Arrow className="h-4 w-4" />
           </Link>
         </Reveal>
@@ -193,9 +193,9 @@ function Home() {
         <div className="container-page">
           <SectionHeading
             invert
-            eyebrow={t({ ar: "لِمَاذَا أَثَرْ", en: "Why Ather" })}
+            eyebrow={t({ ar: "لماذا أثر", en: "Why Ather" })}
             title={t({
-              ar: "طَرِيقَة عَمَل مُنَظَّمَة، لَا وُعُود عَامَّة",
+              ar: "طريقة عمل منظمة، لا وعود عامة",
               en: "A disciplined way of working, not vague promises",
             })}
           />
@@ -217,8 +217,8 @@ function Home() {
       {/* Process */}
       <section className="container-page py-20">
         <SectionHeading
-          eyebrow={t({ ar: "مَرَاحِل الْعَمَل", en: "How we work" })}
-          title={t({ ar: "أَرْبَع مَرَاحِل وَاضِحَة حَتَّى الْإِطْلَاق", en: "Four clear stages to launch" })}
+          eyebrow={t({ ar: "مراحل العمل", en: "How we work" })}
+          title={t({ ar: "أربع مراحل واضحة حتى الإطلاق", en: "Four clear stages to launch" })}
         />
         <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {process.map((p, i) => (
@@ -234,8 +234,8 @@ function Home() {
       {/* FAQ */}
       <section className="container-page pb-20">
         <SectionHeading
-          eyebrow={t({ ar: "أَسْئِلَة شَائِعَة", en: "FAQ" })}
-          title={t({ ar: "أَسْئِلَة نُسْأَل عَنْهَا كَثِيرًا", en: "Questions we hear often" })}
+          eyebrow={t({ ar: "أسئلة شائعة", en: "FAQ" })}
+          title={t({ ar: "أسئلة نسأل عنها كثيرا", en: "Questions we hear often" })}
         />
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {faqs.map((f, i) => (

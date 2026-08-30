@@ -57,7 +57,7 @@ export function PlatformMarquee() {
     <section className="border-y border-border bg-card/60 py-10">
       <p className="container-page text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
         {t({
-          ar: "نَعْمَل عَلَى الْمَنَصَّات وَالْأَنْظِمَة الَّتِي يَعْتَمِد عَلَيْهَا سُوقُك",
+          ar: "نعمل على المنصات والأنظمة التي يعتمد عليها سوقك",
           en: "We work across the platforms and systems your market relies on",
         })}
       </p>
@@ -93,13 +93,13 @@ export function CtaBand() {
           <div className="max-w-xl">
             <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
               {t({
-                ar: "جَاهِز نَبْدَأ مَتْجَرَك أَوْ نُطَوِّر مَا لَدَيْك؟",
+                ar: "جاهز نبدأ متجرك أو نطور ما لديك؟",
                 en: "Ready to launch your store or upgrade what you have?" ,
               })}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {t({
-                ar: "أَرْسِلْ لَنَا تَفَاصِيل نَشَاطِك وَسَنَعُود إِلَيْك بِخُطَّة وَاضِحَة بِمَرَاحِل وَمُدَد.",
+                ar: "أرسل لنا تفاصيل نشاطك وسنعود إليك بخطة واضحة بمراحل ومدد.",
                 en: "Send us your business details and we will reply with a clear staged plan and timeline.",
               })}
             </p>
@@ -112,13 +112,13 @@ export function CtaBand() {
               className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
               <MessageCircle className="h-4 w-4" />
-              {t({ ar: "وَاتْسَاب", en: "WhatsApp" })}
+              {t({ ar: "واتساب", en: "WhatsApp" })}
             </a>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-secondary"
             >
-              {t({ ar: "صَفْحَة التَّوَاصُل", en: "Contact page" })}
+              {t({ ar: "صفحة التواصل", en: "Contact page" })}
             </Link>
           </div>
         </div>
@@ -134,7 +134,7 @@ export function WhatsAppFab() {
       href={company.whatsapp}
       target="_blank"
       rel="noreferrer"
-      aria-label={t({ ar: "تَحَدَّثْ مَعَنَا عَلَى وَاتْسَاب", en: "Chat with us on WhatsApp" })}
+      aria-label={t({ ar: "تحدث معنا على واتساب", en: "Chat with us on WhatsApp" })}
       className="fixed bottom-5 end-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-ink text-primary-foreground shadow-[var(--shadow-lift)] transition-transform hover:scale-105"
     >
       <MessageCircle className="h-6 w-6" />

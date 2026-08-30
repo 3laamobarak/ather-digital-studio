@@ -14,7 +14,7 @@ export function SiteFooter() {
           <Logo invert />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-primary-foreground/70">
             {t({
-              ar: "نَبْنِي مَتَاجِر إِلِكْتُرُونِيَّة وَأَنْظِمَة أَعْمَال تَعْمَل بِهُدُوء وَتَبِيع كُلَّ يَوْم.",
+              ar: "نبني متاجر إلكترونية وأنظمة أعمال تعمل بهدوء وتبيع كل يوم.",
               en: "We build online stores and business systems that run quietly and sell every day.",
             })}
           </p>
@@ -22,7 +22,7 @@ export function SiteFooter() {
 
         <div>
           <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground/60">
-            {t({ ar: "الصَّفَحَات", en: "Pages" })}
+            {t({ ar: "الصفحات", en: "Pages" })}
           </h3>
           <ul className="mt-5 space-y-3">
             {nav.map((item) => (
@@ -40,7 +40,7 @@ export function SiteFooter() {
 
         <div>
           <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground/60">
-            {t({ ar: "تَوَاصَلْ مَعَنَا", en: "Contact" })}
+            {t({ ar: "تواصل معنا", en: "Contact" })}
           </h3>
           <ul className="mt-5 space-y-3.5 text-sm text-primary-foreground/80">
             <li className="flex items-start gap-3">
@@ -71,9 +71,9 @@ export function SiteFooter() {
         <div className="container-page flex flex-col gap-2 py-6 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <span>
             © {new Date().getFullYear()} {t({ ar: company.nameAr, en: company.nameEn })} —{" "}
-            {t({ ar: "جَمِيع الْحُقُوق مَحْفُوظَة", en: "All rights reserved" })}
+            {t({ ar: "جميع الحقوق محفوظة", en: "All rights reserved" })}
           </span>
-          <span>{t({ ar: "قِنَا – مِصْر", en: "Qena — Egypt" })}</span>
+          <span>{t({ ar: "قنا – مصر", en: "Qena — Egypt" })}</span>
         </div>
       </div>
     </footer>

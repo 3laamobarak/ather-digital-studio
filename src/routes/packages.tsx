@@ -35,13 +35,13 @@ function PackagesPage() {
         <div className="container-page">
           <SectionHeading
             center
-            eyebrow={t({ ar: "البَاقَات", en: "Packages" })}
+            eyebrow={t({ ar: "الباقات", en: "Packages" })}
             title={t({
-              ar: "اِخْتَرْ نُقْطَة الْبِدَايَة الْمُنَاسِبَة لِنَشَاطِك",
+              ar: "اختر نقطة البداية المناسبة لنشاطك",
               en: "Choose the starting point that fits your business",
             })}
             body={t({
-              ar: "كُلّ بَاقَة تُسَعَّر حَسَب حَجْم الْعَمَل الْمَطْلُوب، وَنُرْسِل لَك عَرْضًا مُفَصَّلًا بَعْد مُكَالَمَة قَصِيرَة.",
+              ar: "كل باقة تسعر حسب حجم العمل المطلوب، ونرسل لك عرضا مفصلا بعد مكالمة قصيرة.",
               en: "Each package is quoted by scope. After a short call we send you a detailed proposal.",
             })}
           />
@@ -62,7 +62,7 @@ function PackagesPage() {
             >
               {p.best && (
                 <span className="mb-4 inline-flex w-fit rounded-full bg-accent px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-accent-foreground">
-                  {t({ ar: "الْأَكْثَر طَلَبًا", en: "Most popular" })}
+                  {t({ ar: "الأكثر طلبا", en: "Most popular" })}
                 </span>
               )}
               <h2 className={cn("text-xl font-extrabold", p.best ? "text-primary-foreground" : "text-ink")}>
@@ -108,7 +108,7 @@ function PackagesPage() {
                 )}
               >
                 <MessageCircle className="h-4 w-4" />
-                {t({ ar: "اُطْلُبْ عَرْض سِعْر", en: "Request a quote" })}
+                {t({ ar: "اطلب عرض سعر", en: "Request a quote" })}
               </a>
             </Reveal>
           ))}
@@ -116,8 +116,8 @@ function PackagesPage() {
 
         <div className="mt-20">
           <SectionHeading
-            eyebrow={t({ ar: "مَا يَحْدُث بَعْد الْمُوَافَقَة", en: "After you approve" })}
-            title={t({ ar: "تَنْفِيذ عَلَى مَرَاحِل بِمُوَافَقَة فِي كُلِّ خُطْوَة", en: "Staged delivery with sign‑off at every step" })}
+            eyebrow={t({ ar: "ما يحدث بعد الموافقة", en: "After you approve" })}
+            title={t({ ar: "تنفيذ على مراحل بموافقة في كل خطوة", en: "Staged delivery with sign‑off at every step" })}
           />
           <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (

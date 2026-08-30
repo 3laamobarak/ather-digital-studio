@@ -66,7 +66,7 @@ export function SiteHeader() {
             className="hidden items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
             <MessageCircle className="h-4 w-4" />
-            {t({ ar: "اِطْلُبْ عَرْضَك", en: "Get a quote" })}
+            {t({ ar: "اطلب عرضك", en: "Get a quote" })}
           </a>
 
           <button
@@ -101,7 +101,7 @@ export function SiteHeader() {
               className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-primary-foreground"
             >
               <MessageCircle className="h-4 w-4" />
-              {t({ ar: "تَحَدَّثْ مَعَنَا عَلَى وَاتْسَاب", en: "Chat on WhatsApp" })}
+              {t({ ar: "تحدث معنا على واتساب", en: "Chat on WhatsApp" })}
             </a>
           </nav>
         </div>
