@@ -3,7 +3,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import aboutImg from "@/assets/about.jpg";
 import { CtaBand, PlatformMarquee, SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { company, stats, values } from "@/content/site";
+import { company, SITE_URL, stats, values } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about")({
@@ -21,7 +21,9 @@ export const Route = createFileRoute("/about")({
         content:
           "Who we are, how we work, and why merchants trust Ather with their stores and business systems.",
       },
+      { property: "og:url", content: `${SITE_URL}/about` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
   }),
   component: AboutPage,
 });

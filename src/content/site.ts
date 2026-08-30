@@ -9,15 +9,26 @@ import svcGrowth from "@/assets/svc-growth.jpg";
 
 export type Bi<T = string> = { ar: T; en: T };
 
+// Absolute production URL, used for canonical tags, Open Graph URLs, JSON-LD and
+// the sitemap. IMPORTANT: set this to your real domain — either edit the value
+// here or define VITE_SITE_URL in your environment. Keep it in sync with
+// public/sitemap.xml. No trailing slash.
+export const SITE_URL = (
+  import.meta.env["VITE_SITE_URL"] ?? "https://ather-digital-studio.lovable.app"
+).replace(/\/+$/, "");
+
+// Shared social preview image (Open Graph / Twitter card). Lives in /public.
+export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
 export const company = {
   nameAr: "أثر",
   logoNameAr: "أَثَر",
   nameEn: "Ather",
   taglineAr: "للحلول البرمجية",
   taglineEn: "Software Solutions",
-  phone: "+201068134463",
-  phoneDisplay: "+20 106 813 4463",
-  whatsapp: "https://wa.me/201068134463",
+  phone: "+201559011073",
+  phoneDisplay: "+20 155 901 1073",
+  whatsapp: "https://wa.me/201559011073",
   email: "3laa.m0o0barak@gmail.com",
   addressAr: "مصر – قنا – شارع جميل",
   addressEn: "Gameel Street, Qena, Egypt",
@@ -48,7 +59,10 @@ export const platforms = [
     name: "Aramex",
     logo: "https://www.google.com/s2/favicons?domain=aramex.com&sz=128",
   },
-  { name: "Klaviyo", logo: "https://cdn.simpleicons.org/klaviyo/1a2440" },
+  {
+    name: "Klaviyo",
+    logo: "https://www.google.com/s2/favicons?domain=klaviyo.com&sz=128",
+  },
   { name: "Mailchimp", logo: "https://cdn.simpleicons.org/mailchimp/1a2440" },
   { name: "Google", logo: "https://cdn.simpleicons.org/google/1a2440" },
   { name: "Meta", logo: "https://cdn.simpleicons.org/meta/1a2440" },

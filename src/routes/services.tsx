@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { CtaBand, PlatformMarquee, SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { services } from "@/content/site";
+import { services, SITE_URL } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +21,21 @@ export const Route = createFileRoute("/services")({
         content:
           "Domain and store setup, payments, Aramex and DHL shipping, Zoho Inventory and Mail, 300+ products, currency converter, mobile apps.",
       },
+      { property: "og:url", content: `${SITE_URL}/services` },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: services.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: s.title.en,
+            description: s.summary.en,
+          })),
+        },
+      },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/services` }],
   }),
   component: ServicesPage,
 });

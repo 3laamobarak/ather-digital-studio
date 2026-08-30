@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Check, Clock, MessageCircle } from "lucide-react
 import heroImg from "@/assets/hero.jpg";
 import { CtaBand, PlatformMarquee, SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { company, faqs, process, services, stats, values } from "@/content/site";
+import { company, faqs, process, services, SITE_URL, stats, values } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -21,7 +21,9 @@ export const Route = createFileRoute("/")({
         content:
           "Store builds, custom themes, payment gateways, carrier and Zoho integrations, bulk product uploads and mobile apps.",
       },
+      { property: "og:url", content: `${SITE_URL}/` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
   component: Home,
 });

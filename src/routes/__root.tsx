@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { company, OG_IMAGE, SITE_URL } from "@/content/site";
 import { I18nProvider } from "@/lib/i18n";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -76,6 +77,43 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: company.nameEn,
+  alternateName: company.nameAr,
+  description:
+    "Ather builds and scales online stores on Shopify, Salla, Zid and WordPress with payments, carrier and Zoho integrations, bulk products and mobile apps.",
+  url: SITE_URL,
+  image: OG_IMAGE,
+  logo: `${SITE_URL}/favicon.png`,
+  email: company.email,
+  telephone: company.phone,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Gameel Street",
+    addressLocality: "Qena",
+    addressCountry: "EG",
+  },
+  areaServed: ["EG", "SA", "AE", "KW", "QA"],
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "08:00",
+    closes: "22:00",
+  },
+  sameAs: [company.whatsapp],
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -88,10 +126,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Ather builds Shopify, Salla, Zid and WordPress stores with payments, shipping and Zoho integrations.",
       },
       { name: "author", content: "Ather" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "keywords", content: "Ather, أثر, Shopify, Salla, Zid, WordPress, WooCommerce, e-commerce, متجر إلكتروني, Zoho, Qena, Egypt" },
       { property: "og:site_name", content: "Ather" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Ather — E‑commerce & Software Solutions" },
+      { property: "og:locale", content: "ar_EG" },
+      { property: "og:locale:alternate", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "theme-color", content: "#1a2440" },
+      { "script:ld+json": structuredData },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

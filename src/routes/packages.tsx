@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Check, MessageCircle } from "lucide-react";
 import { CtaBand, SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { company, packages, process } from "@/content/site";
+import { company, packages, process, SITE_URL } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +21,9 @@ export const Route = createFileRoute("/packages")({
         content:
           "Launch, Growth, Business and Enterprise packages covering store builds, integrations, apps and support.",
       },
+      { property: "og:url", content: `${SITE_URL}/packages` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/packages` }],
   }),
   component: PackagesPage,
 });
