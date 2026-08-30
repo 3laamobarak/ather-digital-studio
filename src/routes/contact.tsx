@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Paperclip, Phone, Send, X } from "lucide-react";
+import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Paperclip, Send, X } from "lucide-react";
 import { useState } from "react";
 import { SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
@@ -303,16 +303,9 @@ function ContactPage() {
   const rows = [
     {
       icon: MessageCircle,
-      label: t({ ar: "واتساب", en: "WhatsApp" }),
+      label: t({ ar: "الهاتف وواتساب", en: "Phone & WhatsApp" }),
       value: company.phoneDisplay,
       href: company.whatsapp,
-      ltr: true,
-    },
-    {
-      icon: Phone,
-      label: t({ ar: "الهاتف", en: "Phone" }),
-      value: company.phoneDisplay,
-      href: `tel:${company.phone}`,
       ltr: true,
     },
     {
