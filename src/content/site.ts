@@ -284,6 +284,106 @@ export const services: Service[] = [
       ],
     },
   },
+  {
+    slug: "social-media",
+    image: svcGrowth,
+    title: { ar: "إدارة وتسويق السوشيال ميديا", en: "Social Media Management & Marketing" },
+    summary: {
+      ar: "ندير حساباتك على السوشيال ميديا بمحتوى منتظم وتصاميم احترافية وتفاعل يومي يرفع وصولك ومبيعاتك.",
+      en: "We run your social accounts with consistent content, professional designs and daily engagement that grows your reach and sales.",
+    },
+    points: {
+      ar: [
+        "إدارة كاملة لمنصاتك (فيسبوك، إنستجرام، تيك توك، لينكدإن)",
+        "خطة محتوى شهرية وجدولة منشورات منتظمة",
+        "تصاميم منشورات احترافية وريلز قصيرة",
+        "إدارة التعليقات والرسائل والرد على العملاء",
+        "تقارير أداء شهرية بمؤشرات واضحة",
+      ],
+      en: [
+        "Full management of your platforms (Facebook, Instagram, TikTok, LinkedIn)",
+        "Monthly content plan and consistent post scheduling",
+        "Professional post designs and short reels",
+        "Comment, message and community moderation",
+        "Monthly performance reports with clear KPIs",
+      ],
+    },
+  },
+  {
+    slug: "advertising",
+    image: svcAutomation,
+    title: { ar: "الحملات الإعلانية المدفوعة", en: "Paid Advertising Campaigns" },
+    summary: {
+      ar: "نطلق حملات إعلانية عالية العائد على ميتا وجوجل وتيك توك لجذب عملاء مؤهلين وزيادة المبيعات.",
+      en: "We launch high‑ROI campaigns on Meta, Google and TikTok to attract qualified leads and drive sales.",
+    },
+    points: {
+      ar: [
+        "حملات على فيسبوك وإنستجرام وجوجل وتيك توك",
+        "استهداف دقيق للجمهور المناسب لنشاطك",
+        "تصميم إعلانات جذابة ونصوص إعلانية فعالة",
+        "تحسين مستمر للحملات لخفض تكلفة النتيجة",
+        "تقارير عائد الاستثمار ومتابعة التحويلات",
+      ],
+      en: [
+        "Campaigns across Facebook, Instagram, Google and TikTok",
+        "Precise audience targeting for your business",
+        "Scroll‑stopping ad creatives and effective ad copy",
+        "Continuous optimisation to lower cost per result",
+        "ROI reporting and conversion tracking",
+      ],
+    },
+  },
+  {
+    slug: "graphic-design",
+    image: svcSystems,
+    title: { ar: "التصميم الجرافيكي والهوية البصرية", en: "Graphic Design & Brand Identity" },
+    summary: {
+      ar: "نصمم هويتك البصرية من الشعار حتى دليل العلامة، مع تصاميم تسويقية عالية التأثير لكل قنواتك.",
+      en: "We craft your visual identity from logo to brandbook, with high‑impact marketing designs for every channel.",
+    },
+    points: {
+      ar: [
+        "تصميم الشعار والهوية البصرية الكاملة",
+        "دليل العلامة التجارية (الألوان، الخطوط، الاستخدامات)",
+        "تصاميم منشورات السوشيال ميديا والإعلانات",
+        "مطبوعات تسويقية: بروشور، رول أب، بطاقات",
+        "قوالب موحدة تحافظ على هوية علامتك",
+      ],
+      en: [
+        "Logo and full visual identity design",
+        "Brand guidelines (colours, typography, usage)",
+        "Social media and advertising designs",
+        "Marketing print: brochures, roll‑ups, cards",
+        "Consistent templates that protect your brand",
+      ],
+    },
+  },
+  {
+    slug: "video",
+    image: svcApps,
+    title: { ar: "إنتاج الفيديو ومونتاج الريلز", en: "Video Production & Reel Editing" },
+    summary: {
+      ar: "ننتج ونونتج فيديوهات وريلز احترافية بأدوات الذكاء الاصطناعي، مع تعليق صوتي وأفتار مخصص لعلامتك.",
+      en: "We produce and edit professional videos and reels with AI tools, plus voice‑over and a custom brand avatar.",
+    },
+    points: {
+      ar: [
+        "مونتاج ريلز وفيديوهات قصيرة بحركة وتأثيرات احترافية",
+        "فيديوهات بالذكاء الاصطناعي وتحريك الصور",
+        "تعليق صوتي احترافي بلهجات ونبرات مختلفة",
+        "أفتار مخصص (متحدث افتراضي) يمثل علامتك",
+        "فيديوهات تعليمية وإعلانية وسينمائية",
+      ],
+      en: [
+        "Reel and short‑video editing with pro motion and effects",
+        "AI video generation and image animation",
+        "Professional voice‑over in various dialects and tones",
+        "Custom avatar (virtual presenter) for your brand",
+        "Educational, promotional and cinematic videos",
+      ],
+    },
+  },
 ];
 
 export const process: { step: string; title: Bi; body: Bi }[] = [
