@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Paperclip, Phone, Send, X } from "lucide-react";
 import { useState } from "react";
 import { SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { company, faqs } from "@/content/site";
+import { company, faqs, SITE_URL } from "@/content/site";
+import { PhoneField } from "@/components/PhoneField";
+import { sendContactEmail } from "@/lib/contact";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/contact")({
@@ -13,7 +15,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Talk to Ather about your online store or business system. WhatsApp +20 106 813 4463, email 3laa.m0o0barak@gmail.com, open daily 8 AM to 10 PM.",
+          "Talk to Ather about your online store or business system. WhatsApp +20 155 901 1073, email 3laa.m0o0barak@gmail.com, open daily 8 AM to 10 PM.",
       },
       { property: "og:title", content: "Contact Ather" },
       {
@@ -21,29 +23,94 @@ export const Route = createFileRoute("/contact")({
         content: "Reach Ather on WhatsApp or email and get a detailed proposal after a short call.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/contact` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
   }),
   component: ContactPage,
 });
 
 function ContactForm() {
-  const { t } = useI18n();
-  const [form, setForm] = useState({ name: "", phone: "", subject: "", message: "" });
+  const { t, lang } = useI18n();
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  // Bumped after a successful send to remount PhoneField / file input and clear them.
+  const [phoneKey, setPhoneKey] = useState(0);
+  const [file, setFile] = useState<
+    { filename: string; mime: string; dataBase64: string; size: number } | null
+  >(null);
+  const [fileError, setFileError] = useState<string | null>(null);
 
-  const set = (key: keyof typeof form) => (e: { target: { value: string } }) =>
+  const MAX_FILE_BYTES = 5 * 1024 * 1024;
+
+  const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFileError(null);
+    setStatus("idle");
+    const f = e.target.files?.[0];
+    if (!f) {
+      setFile(null);
+      return;
+    }
+    if (f.size > MAX_FILE_BYTES) {
+      setFile(null);
+      e.target.value = "";
+      setFileError(t({ ar: "الحد الأقصى لحجم الملف 5 ميجابايت.", en: "Maximum file size is 5 MB." }));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const res = String(reader.result);
+      const base64 = res.includes(",") ? res.slice(res.indexOf(",") + 1) : res;
+      setFile({ filename: f.name, mime: f.type || "application/octet-stream", dataBase64: base64, size: f.size });
+    };
+    reader.onerror = () =>
+      setFileError(t({ ar: "تعذر قراءة الملف، حاول مرة أخرى.", en: "Couldn't read the file, please try again." }));
+    reader.readAsDataURL(f);
+  };
+
+  const clearFile = () => {
+    setFile(null);
+    setFileError(null);
+  };
+
+  const formatSize = (bytes: number) =>
+    bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+
+  const set = (key: keyof typeof form) => (e: { target: { value: string } }) => {
+    setStatus("idle");
     setForm((f) => ({ ...f, [key]: e.target.value }));
+  };
 
   const body = t({
-    ar: `الاسم: ${form.name}\nرقم الهاتف: ${form.phone}\nالموضوع: ${form.subject}\n\nالتفاصيل:\n${form.message}`,
-    en: `Name: ${form.name}\nPhone: ${form.phone}\nSubject: ${form.subject}\n\nDetails:\n${form.message}`,
+    ar: `الاسم: ${form.name}\nالبريد الإلكتروني: ${form.email}\nرقم الهاتف: ${form.phone}\nالموضوع: ${form.subject}\n\nالتفاصيل:\n${form.message}`,
+    en: `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nSubject: ${form.subject}\n\nDetails:\n${form.message}`,
   });
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(form.subject || t({ ar: "طلب جديد من الموقع", en: "New request from the website" }));
-    window.location.href = `mailto:${company.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+    setStatus("sending");
+    try {
+      await sendContactEmail({
+        data: {
+          ...form,
+          lang,
+          attachment: file
+            ? { filename: file.filename, mime: file.mime, dataBase64: file.dataBase64 }
+            : undefined,
+        },
+      });
+      setStatus("sent");
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      clearFile();
+      setPhoneKey((k) => k + 1);
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
   };
+
+  const sending = status === "sending";
 
   const field =
     "mt-2 w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent";
@@ -80,17 +147,32 @@ function ContactForm() {
           <label className={label} htmlFor="phone">
             {t({ ar: "رقم الهاتف مع كود الدولة", en: "Phone with country code" })}
           </label>
-          <input
+          <PhoneField
+            key={phoneKey}
             id="phone"
             required
-            type="tel"
-            dir="ltr"
-            value={form.phone}
-            onChange={set("phone")}
-            placeholder="+20 100 000 0000"
-            className={field}
+            onChange={(value) => {
+              setStatus("idle");
+              setForm((f) => ({ ...f, phone: value }));
+            }}
           />
         </div>
+      </div>
+
+      <div className="mt-5">
+        <label className={label} htmlFor="email">
+          {t({ ar: "البريد الإلكتروني", en: "Email address" })}
+        </label>
+        <input
+          id="email"
+          required
+          type="email"
+          dir="ltr"
+          value={form.email}
+          onChange={set("email")}
+          placeholder="you@example.com"
+          className={field}
+        />
       </div>
 
       <div className="mt-5">
@@ -125,13 +207,56 @@ function ContactForm() {
         />
       </div>
 
+      <div className="mt-5">
+        <label className={label} htmlFor="attachment">
+          {t({ ar: "إرفاق ملف أو صورة (اختياري)", en: "Attach a file or image (optional)" })}
+        </label>
+        {!file ? (
+          <label
+            htmlFor="attachment"
+            className="mt-2 flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-border bg-card px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-accent hover:text-ink"
+          >
+            <Paperclip className="h-4 w-4 shrink-0" />
+            <span>{t({ ar: "اختر ملفا (بحد أقصى 5 ميجابايت)", en: "Choose a file (max 5 MB)" })}</span>
+          </label>
+        ) : (
+          <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm">
+            <span className="flex min-w-0 items-center gap-2 text-ink">
+              <Paperclip className="h-4 w-4 shrink-0 text-accent-foreground" />
+              <span className="truncate">{file.filename}</span>
+              <span className="shrink-0 text-muted-foreground">({formatSize(file.size)})</span>
+            </span>
+            <button
+              type="button"
+              onClick={clearFile}
+              aria-label={t({ ar: "إزالة الملف", en: "Remove file" })}
+              className="shrink-0 rounded-full p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-ink"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+        <input
+          id="attachment"
+          key={phoneKey}
+          type="file"
+          accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt,.zip"
+          onChange={onFile}
+          className="sr-only"
+        />
+        {fileError && <p className="mt-2 text-sm font-semibold text-red-700">{fileError}</p>}
+      </div>
+
       <div className="mt-7 flex flex-wrap gap-3">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+          disabled={sending}
+          className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
         >
-          <Send className="h-4 w-4" />
-          {t({ ar: "إرسال إلى بريدنا", en: "Send to our email" })}
+          {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+          {sending
+            ? t({ ar: "جاري الإرسال…", en: "Sending…" })
+            : t({ ar: "إرسال إلى بريدنا", en: "Send to our email" })}
         </button>
         <a
           href={`${company.whatsapp}?text=${encodeURIComponent(body)}`}
@@ -143,6 +268,30 @@ function ContactForm() {
           {t({ ar: "إرسال على واتساب", en: "Send on WhatsApp" })}
         </a>
       </div>
+
+      {status === "sent" && (
+        <p
+          role="status"
+          className="mt-5 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm font-semibold text-emerald-700"
+        >
+          <CheckCircle2 className="h-4 w-4 shrink-0" />
+          {t({
+            ar: "تم إرسال رسالتك بنجاح، وسنرد عليك في نفس اليوم.",
+            en: "Your message was sent — we'll reply the same day.",
+          })}
+        </p>
+      )}
+      {status === "error" && (
+        <p
+          role="alert"
+          className="mt-5 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-700"
+        >
+          {t({
+            ar: "تعذر إرسال الرسالة الآن. جرّب مرة أخرى أو راسلنا على واتساب.",
+            en: "We couldn't send the message right now. Please try again or reach us on WhatsApp.",
+          })}
+        </p>
+      )}
       </form>
     </Reveal>
   );

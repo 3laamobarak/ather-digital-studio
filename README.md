@@ -552,3 +552,34 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Contact form email (SMTP)
+
+The contact form (`/contact`) submits to a TanStack Start **server function**
+(`src/lib/contact.ts`) that sends email over SMTP with `nodemailer`. Credentials
+live in environment variables and never reach the browser.
+
+1. Copy `.env.example` to `.env` and fill in your Gmail + **App Password**
+   (create one at https://myaccount.google.com/apppasswords — 2-step verification
+   must be on; a normal account password will be rejected with `535 BadCredentials`).
+2. `npm run dev` — Vite loads `.env` into `process.env` for the server function.
+
+On each submit two emails go out:
+- a notification to `CONTACT_TO` (reply-to set to the visitor), and
+- an automatic bilingual "thank you" reply to the visitor's email address.
+
+For production on Cloudflare, set the same keys as encrypted secrets in the
+dashboard (local Wrangler dev reads `.dev.vars`). Note: `nodemailer` needs a
+Node runtime; on the Cloudflare Workers runtime, switch to an HTTP email API
+(e.g. Resend) using the same server function.
+
+## SEO
+
+- Per-page `<title>`, meta description, Open Graph and canonical tags (see each
+  route's `head()` and `src/routes/__root.tsx`).
+- `ProfessionalService` JSON-LD (name, address in Qena, phone, hours) for local
+  search, plus a services `ItemList`.
+- `public/robots.txt` and `public/sitemap.xml`.
+- Absolute URLs come from `SITE_URL` in `src/content/site.ts` (override with the
+  `VITE_SITE_URL` env var). Keep it in sync with robots.txt and sitemap.xml if
+  you connect a custom domain.
