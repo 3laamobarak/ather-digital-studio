@@ -11,6 +11,7 @@ export type Bi<T = string> = { ar: T; en: T };
 
 export const company = {
   nameAr: "أثر",
+  logoNameAr: "أَثَر",
   nameEn: "Ather",
   taglineAr: "للحلول البرمجية",
   taglineEn: "Software Solutions",
