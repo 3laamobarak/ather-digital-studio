@@ -50,7 +50,8 @@ function ContactForm() {
   const label = "text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground";
 
   return (
-    <Reveal as="form" onSubmit={submit} className="surface-card p-8">
+    <Reveal className="surface-card p-8">
+      <form onSubmit={submit}>
       <h2 className="text-2xl font-extrabold text-ink">
         {t({ ar: "أرسل لنا تفاصيل مشروعك", en: "Send us your project details" })}
       </h2>
@@ -142,6 +143,7 @@ function ContactForm() {
           {t({ ar: "إرسال على واتساب", en: "Send on WhatsApp" })}
         </a>
       </div>
+      </form>
     </Reveal>
   );
 }
