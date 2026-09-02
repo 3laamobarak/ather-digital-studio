@@ -29,7 +29,9 @@ export function SiteHeader() {
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-300",
-        scrolled ? "border-border bg-background/90 backdrop-blur-md" : "border-transparent bg-background",
+        scrolled
+          ? "border-border bg-background/90 backdrop-blur-md"
+          : "border-transparent bg-background",
       )}
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">

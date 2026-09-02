@@ -294,7 +294,9 @@ export function PhoneField({
             alt=""
             className="h-[14px] w-[20px] rounded-[2px] object-cover"
           />
-          <span dir="ltr" className="font-semibold">+{country.dial}</span>
+          <span dir="ltr" className="font-semibold">
+            +{country.dial}
+          </span>
           <ChevronDown className="h-4 w-4 text-muted-foreground" />
         </button>
 
@@ -349,8 +351,12 @@ export function PhoneField({
                     alt=""
                     className="h-[14px] w-[20px] rounded-[2px] object-cover"
                   />
-                  <span className="flex-1 truncate text-ink">{t({ ar: c.nameAr ?? c.name, en: c.name })}</span>
-                  <span dir="ltr" className="font-semibold text-muted-foreground">+{c.dial}</span>
+                  <span className="flex-1 truncate text-ink">
+                    {t({ ar: c.nameAr ?? c.name, en: c.name })}
+                  </span>
+                  <span dir="ltr" className="font-semibold text-muted-foreground">
+                    +{c.dial}
+                  </span>
                 </button>
               </li>
             ))}

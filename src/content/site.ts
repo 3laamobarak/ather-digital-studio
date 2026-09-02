@@ -6,7 +6,7 @@ import svcApps from "@/assets/svc-apps.jpg";
 import svcAutomation from "@/assets/svc-automation.jpg";
 import svcSystems from "@/assets/svc-systems.jpg";
 import svcGrowth from "@/assets/svc-growth.jpg";
-import seoImage from "@/assets/SEO.webp";
+const seoImage = svcGrowth;
 
 export type Bi<T = string> = { ar: T; en: T };
 
@@ -24,13 +24,13 @@ export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const company = {
   nameAr: "أثر",
   logoNameAr: "أَثَر",
-  nameEn: "Ather",
+  nameEn: "Athr",
   taglineAr: "للحلول البرمجية",
   taglineEn: "Software Solutions",
   phone: "+201559011073",
   phoneDisplay: "+20 155 901 1073",
   whatsapp: "https://wa.me/201559011073",
-  email: "3laa.m0o0barak@gmail.com",
+  email: "athr@gmail.com",
   addressAr: "مصر – قنا – شارع جميل",
   addressEn: "Gameel Street, Qena, Egypt",
   hoursAr: "يوميا من 8 صباحا حتى 10 مساء",
@@ -453,7 +453,10 @@ export const packages: {
   {
     name: { ar: "باقة النمو", en: "Growth" },
     best: true,
-    for: { ar: "للمتاجر التي تبيع فعلا وتريد التوسع", en: "For stores already selling and scaling" },
+    for: {
+      ar: "للمتاجر التي تبيع فعلا وتريد التوسع",
+      en: "For stores already selling and scaling",
+    },
     features: {
       ar: [
         "كل ما في باقة الإطلاق",
@@ -583,4 +586,50 @@ export const faqs: { q: Bi; a: Bi }[] = [
       en: "Every package includes a support period, renewable through an annual maintenance agreement.",
     },
   },
+];
+
+
+export const testimonials: { name: Bi; role: Bi; quote: Bi; image?: string }[] = [
+  {
+    name: { ar: "أحمد محمد", en: "Ahmed Mohamed" },
+    role: { ar: "مؤسس متجر إلكتروني", en: "E-commerce Founder" },
+    quote: {
+      ar: "فريق أثر قدم لنا تجربة متجر إلكتروني استثنائية من البداية للنهاية. سرعة في التنفيذ واحترافية في التعامل.",
+      en: "The Athr team provided us with an exceptional e-commerce experience from start to finish. Fast execution and professional conduct."
+    }
+  },
+  {
+    name: { ar: "سارة خالد", en: "Sarah Khaled" },
+    role: { ar: "مديرة تسويق", en: "Marketing Manager" },
+    quote: {
+      ar: "التكامل مع زوهو وإدارة المخزون وفر علينا الكثير من الوقت والجهد. شكرا أثر!",
+      en: "The integration with Zoho and inventory management saved us a lot of time and effort. Thank you Athr!"
+    }
+  },
+  {
+    name: { ar: "خالد عبدالله", en: "Khaled Abdullah" },
+    role: { ar: "صاحب سلسلة معارض", en: "Retail Chain Owner" },
+    quote: {
+      ar: "أفضل استثمار قمنا به كان العمل مع فريق أثر لتطوير متجرنا ونظام المبيعات الخاص بنا.",
+      en: "The best investment we made was working with the Athr team to develop our store and sales system."
+    }
+  }
+];
+
+export const portfolio: { title: Bi; category: Bi; image: string }[] = [
+  {
+    title: { ar: "متجر ملابس عصري", en: "Modern Clothing Store" },
+    category: { ar: "شوبيفاي", en: "Shopify" },
+    image: svcStore
+  },
+  {
+    title: { ar: "منصة بيع جملة", en: "Wholesale Platform" },
+    category: { ar: "تطوير خاص", en: "Custom Development" },
+    image: svcSystems
+  },
+  {
+    title: { ar: "تطبيق جوال لمطعم", en: "Restaurant Mobile App" },
+    category: { ar: "تطبيقات جوال", en: "Mobile Apps" },
+    image: svcApps
+  }
 ];

@@ -9,17 +9,17 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Ather — A Software Studio in Qena, Egypt" },
+      { title: "About Athr — A Software Studio in Qena, Egypt" },
       {
         name: "description",
         content:
-          "Ather is a software studio in Qena, Egypt building online stores, integrations and business systems for merchants across the region.",
+          "Athr is a software studio in Qena, Egypt building online stores, integrations and business systems for merchants across the region.",
       },
-      { property: "og:title", content: "About Ather" },
+      { property: "og:title", content: "About Athr" },
       {
         property: "og:description",
         content:
-          "Who we are, how we work, and why merchants trust Ather with their stores and business systems.",
+          "Who we are, how we work, and why merchants trust Athr with their stores and business systems.",
       },
       { property: "og:url", content: `${SITE_URL}/about` },
     ],
@@ -47,7 +47,7 @@ function AboutPage() {
               eyebrow={t({ ar: "من نحن", en: "About us" })}
               title={t({
                 ar: "أثر — فريق يترك أثرا في كل مشروع",
-                en: "Ather — a team that leaves a mark on every project",
+                en: "Athr — a team that leaves a mark on every project",
               })}
               body={t({
                 ar: "بدأنا من قنا في مصر بفكرة بسيطة: أن صاحب العمل يحتاج شريكا تقنيا يفهم البيع، لا مجرد موقع جميل. نعمل مع تجار وشركات في مصر والخليج على بناء متاجر وأنظمة تدار بسهولة وتنمو مع نشاطهم.",
@@ -109,7 +109,11 @@ function AboutPage() {
                 <li key={row.value} className="flex items-start gap-3 text-sm text-ink-soft">
                   <row.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                   {row.href ? (
-                    <a href={row.href} dir={row.ltr ? "ltr" : undefined} className="break-all hover:text-accent">
+                    <a
+                      href={row.href}
+                      dir={row.ltr ? "ltr" : undefined}
+                      className="break-all hover:text-accent"
+                    >
                       {row.value}
                     </a>
                   ) : (

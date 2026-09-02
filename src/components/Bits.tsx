@@ -94,7 +94,7 @@ export function CtaBand() {
             <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
               {t({
                 ar: "جاهز نبدأ متجرك أو نطور ما لديك؟",
-                en: "Ready to launch your store or upgrade what you have?" ,
+                en: "Ready to launch your store or upgrade what you have?",
               })}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

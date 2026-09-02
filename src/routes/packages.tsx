@@ -9,13 +9,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/packages")({
   head: () => ({
     meta: [
-      { title: "Packages — Launch, Growth, Business & Enterprise | Ather" },
+      { title: "Packages — Launch, Growth, Business & Enterprise | Athr" },
       {
         name: "description",
         content:
-          "Four Ather packages for online stores and custom systems: store setup, custom themes, integrations, mobile apps and ongoing support. Quotes on request.",
+          "Four Athr packages for online stores and custom systems: store setup, custom themes, integrations, mobile apps and ongoing support. Quotes on request.",
       },
-      { property: "og:title", content: "Ather Packages" },
+      { property: "og:title", content: "Athr Packages" },
       {
         property: "og:description",
         content:
@@ -67,7 +67,12 @@ function PackagesPage() {
                   {t({ ar: "الأكثر طلبا", en: "Most popular" })}
                 </span>
               )}
-              <h2 className={cn("text-xl font-extrabold", p.best ? "text-primary-foreground" : "text-ink")}>
+              <h2
+                className={cn(
+                  "text-xl font-extrabold",
+                  p.best ? "text-primary-foreground" : "text-ink",
+                )}
+              >
                 {t(p.name)}
               </h2>
               <p
@@ -78,12 +83,7 @@ function PackagesPage() {
               >
                 {t(p.for)}
               </p>
-              <div
-                className={cn(
-                  "my-6 h-px",
-                  p.best ? "bg-white/15" : "bg-border",
-                )}
-              />
+              <div className={cn("my-6 h-px", p.best ? "bg-white/15" : "bg-border")} />
               <ul className="flex-1 space-y-3">
                 {t(p.features).map((f) => (
                   <li
@@ -104,9 +104,7 @@ function PackagesPage() {
                 rel="noreferrer"
                 className={cn(
                   "mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5",
-                  p.best
-                    ? "bg-accent text-accent-foreground"
-                    : "bg-ink text-primary-foreground",
+                  p.best ? "bg-accent text-accent-foreground" : "bg-ink text-primary-foreground",
                 )}
               >
                 <MessageCircle className="h-4 w-4" />
@@ -119,12 +117,17 @@ function PackagesPage() {
         <div className="mt-20">
           <SectionHeading
             eyebrow={t({ ar: "ما يحدث بعد الموافقة", en: "After you approve" })}
-            title={t({ ar: "تنفيذ على مراحل بموافقة في كل خطوة", en: "Staged delivery with sign‑off at every step" })}
+            title={t({
+              ar: "تنفيذ على مراحل بموافقة في كل خطوة",
+              en: "Staged delivery with sign‑off at every step",
+            })}
           />
           <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (
               <Reveal key={p.step} delay={i * 60} as="li" className="surface-card p-6">
-                <span className="font-display text-3xl font-extrabold text-accent/40">{p.step}</span>
+                <span className="font-display text-3xl font-extrabold text-accent/40">
+                  {p.step}
+                </span>
                 <h3 className="mt-3 text-base font-bold text-ink">{t(p.title)}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(p.body)}</p>
               </Reveal>

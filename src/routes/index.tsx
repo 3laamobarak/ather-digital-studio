@@ -3,19 +3,19 @@ import { ArrowLeft, ArrowRight, Check, Clock, MessageCircle } from "lucide-react
 import heroImg from "@/assets/hero.jpg";
 import { CtaBand, PlatformMarquee, SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { company, faqs, process, services, SITE_URL, stats, values } from "@/content/site";
+import { company, faqs, process, services, SITE_URL, stats, values, testimonials, portfolio, packages } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ather — E‑commerce Stores, Integrations & Software Solutions" },
+      { title: "Athr — E‑commerce Stores, Integrations & Software Solutions" },
       {
         name: "description",
         content:
-          "Ather builds and scales online stores on Shopify, Salla, Zid and WordPress: domain setup, payments, carriers, Zoho integrations, bulk products and mobile apps.",
+          "Athr builds and scales online stores on Shopify, Salla, Zid and WordPress: domain setup, payments, carriers, Zoho integrations, bulk products and mobile apps.",
       },
-      { property: "og:title", content: "Ather — E‑commerce & Software Solutions" },
+      { property: "og:title", content: "Athr — E‑commerce & Software Solutions" },
       {
         property: "og:description",
         content:
@@ -42,7 +42,7 @@ function Home() {
             <Reveal>
               <span className="eyebrow">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                {t({ ar: "أثر للحلول البرمجية", en: "Ather Software Solutions" })}
+                {t({ ar: "أثر للحلول البرمجية", en: "Athr Software Solutions" })}
               </span>
             </Reveal>
             <Reveal delay={80}>
@@ -82,7 +82,10 @@ function Home() {
                 <Arrow className="h-4 w-4" />
               </Link>
             </Reveal>
-            <Reveal delay={280} className="mt-7 flex items-center gap-2 text-sm text-muted-foreground">
+            <Reveal
+              delay={280}
+              className="mt-7 flex items-center gap-2 text-sm text-muted-foreground"
+            >
               <Clock className="h-4 w-4 text-accent" />
               {t({ ar: company.hoursAr, en: company.hoursEn })}
             </Reveal>
@@ -126,6 +129,37 @@ function Home() {
         <PlatformMarquee />
       </div>
 
+      {/* About Preview */}
+      <section className="container-page py-20">
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          <Reveal>
+            <SectionHeading
+              eyebrow={t({ ar: "من نحن", en: "About Us" })}
+              title={t({ ar: "شريكك التقني للنمو", en: "Your technical partner for growth" })}
+              body={t({
+                ar: "بدأنا من قنا في مصر بفكرة بسيطة: أن صاحب العمل يحتاج شريكا تقنيا يفهم البيع، لا مجرد موقع جميل. نعمل مع تجار وشركات في مصر والخليج على بناء متاجر وأنظمة تدار بسهولة وتنمو مع نشاطهم.",
+                en: "We started in Qena, Egypt with a simple idea: business owners need a tech partner who understands sales, not just pretty websites. We work with merchants across Egypt and the Gulf to build stores and systems that are easy to run and scale."
+              })}
+            />
+            <Link
+              to="/about"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            >
+              {t({ ar: "اقرأ المزيد عنا", en: "Read more about us" })}
+              <Arrow className="h-4 w-4" />
+            </Link>
+          </Reveal>
+          <Reveal delay={120} className="relative aspect-square overflow-hidden rounded-3xl md:aspect-[4/3]">
+            <img
+              src={heroImg}
+              alt="About Athr"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-ink/10" />
+          </Reveal>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="container-page py-20">
         <SectionHeading
@@ -141,7 +175,7 @@ function Home() {
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.slice(0, 6).map((s, i) => (
+          {services.map((s, i) => (
             <Reveal
               key={s.slug}
               delay={i * 60}
@@ -190,12 +224,33 @@ function Home() {
         </Reveal>
       </section>
 
+      {/* Portfolio */}
+      <section className="container-page pb-20">
+        <SectionHeading
+          eyebrow={t({ ar: "أعمالنا", en: "Our Work" })}
+          title={t({ ar: "مشاريع نفخر بها", en: "Projects we are proud of" })}
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {portfolio.map((p, i) => (
+            <Reveal key={p.title.en} delay={i * 60} className="surface-card group overflow-hidden">
+              <div className="relative aspect-video overflow-hidden bg-muted">
+                <img src={p.image} alt={t(p.title)} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="p-5">
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent">{t(p.category)}</span>
+                <h3 className="mt-2 text-lg font-bold text-ink">{t(p.title)}</h3>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* Values */}
       <section className="ink-panel py-20">
         <div className="container-page">
           <SectionHeading
             invert
-            eyebrow={t({ ar: "لماذا أثر", en: "Why Ather" })}
+            eyebrow={t({ ar: "لماذا أثر", en: "Why Athr" })}
             title={t({
               ar: "طريقة عمل منظمة، لا وعود عامة",
               en: "A disciplined way of working, not vague promises",
@@ -209,10 +264,31 @@ function Home() {
                 className="rounded-2xl border border-white/10 bg-white/5 p-6"
               >
                 <h3 className="text-base font-bold text-primary-foreground">{t(v.title)}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{t(v.body)}</p>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                  {t(v.body)}
+                </p>
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "آراء العملاء", en: "Testimonials" })}
+          title={t({ ar: "ماذا يقول عملاؤنا", en: "What our clients say" })}
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {testimonials.map((tItem, i) => (
+            <Reveal key={tItem.name.en} delay={i * 60} className="surface-card p-6">
+              <p className="text-sm leading-relaxed text-muted-foreground">"{t(tItem.quote)}"</p>
+              <div className="mt-6">
+                <p className="text-sm font-bold text-ink">{t(tItem.name)}</p>
+                <p className="text-xs text-muted-foreground">{t(tItem.role)}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -231,6 +307,45 @@ function Home() {
             </Reveal>
           ))}
         </ol>
+      </section>
+
+      {/* Pricing / Packages */}
+      <section className="ink-panel py-20">
+        <div className="container-page">
+          <SectionHeading
+            invert
+            eyebrow={t({ ar: "الباقات", en: "Packages" })}
+            title={t({ ar: "خطط تناسب حجم نشاطك", en: "Plans that fit your business size" })}
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {packages.map((pkg, i) => (
+              <Reveal
+                key={pkg.name.en}
+                delay={i * 60}
+                className={`relative flex flex-col rounded-2xl p-6 ${
+                  pkg.best ? "bg-accent text-accent-foreground" : "border border-white/10 bg-white/5"
+                }`}
+              >
+                {pkg.best && (
+                  <span className="absolute -top-3 end-4 rounded-full bg-ink px-3 py-1 text-xs font-bold text-white shadow-sm">
+                    {t({ ar: "الأكثر طلبا", en: "Most Popular" })}
+                  </span>
+                )}
+                <h3 className={`text-xl font-bold ${pkg.best ? "text-ink" : "text-white"}`}>{t(pkg.name)}</h3>
+                <p className={`mt-2 text-sm ${pkg.best ? "text-ink/80" : "text-white/70"}`}>{t(pkg.for)}</p>
+                <Link
+                  to="/packages"
+                  className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold transition-colors ${
+                    pkg.best ? "bg-ink text-white hover:bg-ink/90" : "bg-white/10 text-white hover:bg-white/20"
+                  }`}
+                >
+                  {t({ ar: "عرض التفاصيل", en: "View details" })}
+                  <Arrow className="h-4 w-4" />
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* FAQ */}

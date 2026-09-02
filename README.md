@@ -1,7 +1,7 @@
-# Ather — E‑commerce & Software Solutions
+# Athr — E‑commerce & Software Solutions
 
-Bilingual (Arabic / English) marketing website for **Ather**, a software and
-digital studio based in Qena, Egypt. Ather builds and scales online stores and
+Bilingual (Arabic / English) marketing website for **Athr**, a software and
+digital studio based in Qena, Egypt. Athr builds and scales online stores and
 handles the marketing around them — from store setup and integrations to social
 media, advertising and video.
 

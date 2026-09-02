@@ -83,7 +83,7 @@ const structuredData = {
   name: company.nameEn,
   alternateName: company.nameAr,
   description:
-    "Ather builds and scales online stores on Shopify, Salla, Zid and WordPress with payments, carrier and Zoho integrations, bulk products and mobile apps.",
+    "Athr builds and scales online stores on Shopify, Salla, Zid and WordPress with payments, carrier and Zoho integrations, bulk products and mobile apps.",
   url: SITE_URL,
   image: OG_IMAGE,
   logo: `${SITE_URL}/favicon.png`,
@@ -99,15 +99,7 @@ const structuredData = {
   areaServed: ["EG", "SA", "AE", "KW", "QA"],
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ],
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     opens: "08:00",
     closes: "22:00",
   },
@@ -119,22 +111,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ather — E‑commerce & Software Solutions" },
+      { title: "Athr — E‑commerce & Software Solutions" },
       {
         name: "description",
         content:
-          "Ather builds Shopify, Salla, Zid and WordPress stores with payments, shipping and Zoho integrations.",
+          "Athr builds Shopify, Salla, Zid and WordPress stores with payments, shipping and Zoho integrations.",
       },
-      { name: "author", content: "Ather" },
+      { name: "author", content: "Athr" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
-      { name: "keywords", content: "Ather, أثر, Shopify, Salla, Zid, WordPress, WooCommerce, e-commerce, متجر إلكتروني, Zoho, Qena, Egypt" },
-      { property: "og:site_name", content: "Ather" },
+      {
+        name: "keywords",
+        content:
+          "Athr, أثر, Shopify, Salla, Zid, WordPress, WooCommerce, e-commerce, متجر إلكتروني, Zoho, Qena, Egypt",
+      },
+      { property: "og:site_name", content: "Athr" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Ather — E‑commerce & Software Solutions" },
+      { property: "og:image:alt", content: "Athr — E‑commerce & Software Solutions" },
       { property: "og:locale", content: "ar_EG" },
       { property: "og:locale:alternate", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },

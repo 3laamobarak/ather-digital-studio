@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import mark from "@/assets/ather-mark.png";
+import mark from "@/assets/athr-mark.png";
 import { company } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -8,7 +8,11 @@ export function Logo({ className, invert = false }: { className?: string; invert
   const { lang } = useI18n();
 
   return (
-    <Link to="/" className={cn("group flex items-center gap-3", className)} aria-label={company.nameEn}>
+    <Link
+      to="/"
+      className={cn("group flex items-center gap-3", className)}
+      aria-label={company.nameEn}
+    >
       <img
         src={mark}
         alt=""

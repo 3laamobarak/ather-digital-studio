@@ -10,7 +10,7 @@ import {
 
 export type Lang = "ar" | "en";
 
-const STORAGE_KEY = "ather-lang";
+const STORAGE_KEY = "athr-lang";
 
 type Ctx = {
   lang: Lang;

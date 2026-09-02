@@ -9,13 +9,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Store Builds, Integrations & Apps | Ather" },
+      { title: "Services — Store Builds, Integrations & Apps | Athr" },
       {
         name: "description",
         content:
           "Store builds on Shopify, Salla, Zid and WordPress, custom themes, bulk product uploads, Zoho and carrier integrations, payments, currency converter and mobile apps.",
       },
-      { property: "og:title", content: "Ather Services — Stores, Integrations & Apps" },
+      { property: "og:title", content: "Athr Services — Stores, Integrations & Apps" },
       {
         property: "og:description",
         content:

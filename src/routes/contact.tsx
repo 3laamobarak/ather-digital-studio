@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Paperclip, Send, X } from "lucide-react";
+import {
+  CheckCircle2,
+  Clock,
+  Loader2,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Paperclip,
+  Send,
+  X,
+} from "lucide-react";
 import { useState } from "react";
 import { SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
@@ -11,16 +21,16 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Ather — WhatsApp, Email & Office in Qena" },
+      { title: "Contact Athr — WhatsApp, Email & Office in Qena" },
       {
         name: "description",
         content:
-          "Talk to Ather about your online store or business system. WhatsApp +20 155 901 1073, email 3laa.m0o0barak@gmail.com, open daily 8 AM to 10 PM.",
+          "Talk to Athr about your online store or business system. WhatsApp +20 155 901 1073, email 3laa.m0o0barak@gmail.com, open daily 8 AM to 10 PM.",
       },
-      { property: "og:title", content: "Contact Ather" },
+      { property: "og:title", content: "Contact Athr" },
       {
         property: "og:description",
-        content: "Reach Ather on WhatsApp or email and get a detailed proposal after a short call.",
+        content: "Reach Athr on WhatsApp or email and get a detailed proposal after a short call.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/contact` },
@@ -37,9 +47,12 @@ function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   // Bumped after a successful send to remount PhoneField / file input and clear them.
   const [phoneKey, setPhoneKey] = useState(0);
-  const [file, setFile] = useState<
-    { filename: string; mime: string; dataBase64: string; size: number } | null
-  >(null);
+  const [file, setFile] = useState<{
+    filename: string;
+    mime: string;
+    dataBase64: string;
+    size: number;
+  } | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
 
   const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -55,17 +68,29 @@ function ContactForm() {
     if (f.size > MAX_FILE_BYTES) {
       setFile(null);
       e.target.value = "";
-      setFileError(t({ ar: "الحد الأقصى لحجم الملف 5 ميجابايت.", en: "Maximum file size is 5 MB." }));
+      setFileError(
+        t({ ar: "الحد الأقصى لحجم الملف 5 ميجابايت.", en: "Maximum file size is 5 MB." }),
+      );
       return;
     }
     const reader = new FileReader();
     reader.onload = () => {
       const res = String(reader.result);
       const base64 = res.includes(",") ? res.slice(res.indexOf(",") + 1) : res;
-      setFile({ filename: f.name, mime: f.type || "application/octet-stream", dataBase64: base64, size: f.size });
+      setFile({
+        filename: f.name,
+        mime: f.type || "application/octet-stream",
+        dataBase64: base64,
+        size: f.size,
+      });
     };
     reader.onerror = () =>
-      setFileError(t({ ar: "تعذر قراءة الملف، حاول مرة أخرى.", en: "Couldn't read the file, please try again." }));
+      setFileError(
+        t({
+          ar: "تعذر قراءة الملف، حاول مرة أخرى.",
+          en: "Couldn't read the file, please try again.",
+        }),
+      );
     reader.readAsDataURL(f);
   };
 
@@ -75,7 +100,9 @@ function ContactForm() {
   };
 
   const formatSize = (bytes: number) =>
-    bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    bytes < 1024 * 1024
+      ? `${Math.max(1, Math.round(bytes / 1024))} KB`
+      : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 
   const set = (key: keyof typeof form) => (e: { target: { value: string } }) => {
     setStatus("idle");
@@ -119,179 +146,181 @@ function ContactForm() {
   return (
     <Reveal className="surface-card p-8">
       <form onSubmit={submit}>
-      <h2 className="text-2xl font-extrabold text-ink">
-        {t({ ar: "أرسل لنا تفاصيل مشروعك", en: "Send us your project details" })}
-      </h2>
-      <p className="mt-2 text-sm text-muted-foreground">
-        {t({
-          ar: "املأ الحقول وسنستلم رسالتك على بريدنا ونرد عليك في نفس اليوم.",
-          en: "Fill in the fields and your message reaches our inbox — we reply the same day.",
-        })}
-      </p>
+        <h2 className="text-2xl font-extrabold text-ink">
+          {t({ ar: "أرسل لنا تفاصيل مشروعك", en: "Send us your project details" })}
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          {t({
+            ar: "املأ الحقول وسنستلم رسالتك على بريدنا ونرد عليك في نفس اليوم.",
+            en: "Fill in the fields and your message reaches our inbox — we reply the same day.",
+          })}
+        </p>
 
-      <div className="mt-7 grid gap-5 sm:grid-cols-2">
-        <div>
-          <label className={label} htmlFor="name">
-            {t({ ar: "الاسم", en: "Full name" })}
+        <div className="mt-7 grid gap-5 sm:grid-cols-2">
+          <div>
+            <label className={label} htmlFor="name">
+              {t({ ar: "الاسم", en: "Full name" })}
+            </label>
+            <input
+              id="name"
+              required
+              value={form.name}
+              onChange={set("name")}
+              placeholder={t({ ar: "محمد أحمد", en: "Mohamed Ahmed" })}
+              className={field}
+            />
+          </div>
+          <div>
+            <label className={label} htmlFor="phone">
+              {t({ ar: "رقم الهاتف مع كود الدولة", en: "Phone with country code" })}
+            </label>
+            <PhoneField
+              key={phoneKey}
+              id="phone"
+              required
+              onChange={(value) => {
+                setStatus("idle");
+                setForm((f) => ({ ...f, phone: value }));
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <label className={label} htmlFor="email">
+            {t({ ar: "البريد الإلكتروني", en: "Email address" })}
           </label>
           <input
-            id="name"
+            id="email"
             required
-            value={form.name}
-            onChange={set("name")}
-            placeholder={t({ ar: "محمد أحمد", en: "Mohamed Ahmed" })}
+            type="email"
+            dir="ltr"
+            value={form.email}
+            onChange={set("email")}
+            placeholder="you@example.com"
             className={field}
           />
         </div>
-        <div>
-          <label className={label} htmlFor="phone">
-            {t({ ar: "رقم الهاتف مع كود الدولة", en: "Phone with country code" })}
+
+        <div className="mt-5">
+          <label className={label} htmlFor="subject">
+            {t({ ar: "الموضوع", en: "Subject" })}
           </label>
-          <PhoneField
-            key={phoneKey}
-            id="phone"
+          <input
+            id="subject"
             required
-            onChange={(value) => {
-              setStatus("idle");
-              setForm((f) => ({ ...f, phone: value }));
-            }}
+            value={form.subject}
+            onChange={set("subject")}
+            placeholder={t({ ar: "متجر جديد على شوبيفاي", en: "New Shopify store" })}
+            className={field}
           />
         </div>
-      </div>
 
-      <div className="mt-5">
-        <label className={label} htmlFor="email">
-          {t({ ar: "البريد الإلكتروني", en: "Email address" })}
-        </label>
-        <input
-          id="email"
-          required
-          type="email"
-          dir="ltr"
-          value={form.email}
-          onChange={set("email")}
-          placeholder="you@example.com"
-          className={field}
-        />
-      </div>
-
-      <div className="mt-5">
-        <label className={label} htmlFor="subject">
-          {t({ ar: "الموضوع", en: "Subject" })}
-        </label>
-        <input
-          id="subject"
-          required
-          value={form.subject}
-          onChange={set("subject")}
-          placeholder={t({ ar: "متجر جديد على شوبيفاي", en: "New Shopify store" })}
-          className={field}
-        />
-      </div>
-
-      <div className="mt-5">
-        <label className={label} htmlFor="message">
-          {t({ ar: "تفاصيل الطلب", en: "Description" })}
-        </label>
-        <textarea
-          id="message"
-          required
-          rows={5}
-          value={form.message}
-          onChange={set("message")}
-          placeholder={t({
-            ar: "احك لنا عن نشاطك، المنصة، والخدمات التي تحتاجها.",
-            en: "Tell us about your business, the platform and the services you need.",
-          })}
-          className={`${field} resize-y`}
-        />
-      </div>
-
-      <div className="mt-5">
-        <label className={label} htmlFor="attachment">
-          {t({ ar: "إرفاق ملف أو صورة (اختياري)", en: "Attach a file or image (optional)" })}
-        </label>
-        {!file ? (
-          <label
-            htmlFor="attachment"
-            className="mt-2 flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-border bg-card px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-accent hover:text-ink"
-          >
-            <Paperclip className="h-4 w-4 shrink-0" />
-            <span>{t({ ar: "اختر ملفا (بحد أقصى 5 ميجابايت)", en: "Choose a file (max 5 MB)" })}</span>
+        <div className="mt-5">
+          <label className={label} htmlFor="message">
+            {t({ ar: "تفاصيل الطلب", en: "Description" })}
           </label>
-        ) : (
-          <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm">
-            <span className="flex min-w-0 items-center gap-2 text-ink">
-              <Paperclip className="h-4 w-4 shrink-0 text-accent-foreground" />
-              <span className="truncate">{file.filename}</span>
-              <span className="shrink-0 text-muted-foreground">({formatSize(file.size)})</span>
-            </span>
-            <button
-              type="button"
-              onClick={clearFile}
-              aria-label={t({ ar: "إزالة الملف", en: "Remove file" })}
-              className="shrink-0 rounded-full p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-ink"
+          <textarea
+            id="message"
+            required
+            rows={5}
+            value={form.message}
+            onChange={set("message")}
+            placeholder={t({
+              ar: "احك لنا عن نشاطك، المنصة، والخدمات التي تحتاجها.",
+              en: "Tell us about your business, the platform and the services you need.",
+            })}
+            className={`${field} resize-y`}
+          />
+        </div>
+
+        <div className="mt-5">
+          <label className={label} htmlFor="attachment">
+            {t({ ar: "إرفاق ملف أو صورة (اختياري)", en: "Attach a file or image (optional)" })}
+          </label>
+          {!file ? (
+            <label
+              htmlFor="attachment"
+              className="mt-2 flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-border bg-card px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-accent hover:text-ink"
             >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
+              <Paperclip className="h-4 w-4 shrink-0" />
+              <span>
+                {t({ ar: "اختر ملفا (بحد أقصى 5 ميجابايت)", en: "Choose a file (max 5 MB)" })}
+              </span>
+            </label>
+          ) : (
+            <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm">
+              <span className="flex min-w-0 items-center gap-2 text-ink">
+                <Paperclip className="h-4 w-4 shrink-0 text-accent-foreground" />
+                <span className="truncate">{file.filename}</span>
+                <span className="shrink-0 text-muted-foreground">({formatSize(file.size)})</span>
+              </span>
+              <button
+                type="button"
+                onClick={clearFile}
+                aria-label={t({ ar: "إزالة الملف", en: "Remove file" })}
+                className="shrink-0 rounded-full p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-ink"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+          )}
+          <input
+            id="attachment"
+            key={phoneKey}
+            type="file"
+            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt,.zip"
+            onChange={onFile}
+            className="sr-only"
+          />
+          {fileError && <p className="mt-2 text-sm font-semibold text-red-700">{fileError}</p>}
+        </div>
+
+        <div className="mt-7 flex flex-wrap gap-3">
+          <button
+            type="submit"
+            disabled={sending}
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+          >
+            {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+            {sending
+              ? t({ ar: "جاري الإرسال…", en: "Sending…" })
+              : t({ ar: "إرسال إلى بريدنا", en: "Send to our email" })}
+          </button>
+          <a
+            href={`${company.whatsapp}?text=${encodeURIComponent(body)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-secondary"
+          >
+            <MessageCircle className="h-4 w-4" />
+            {t({ ar: "إرسال على واتساب", en: "Send on WhatsApp" })}
+          </a>
+        </div>
+
+        {status === "sent" && (
+          <p
+            role="status"
+            className="mt-5 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm font-semibold text-emerald-700"
+          >
+            <CheckCircle2 className="h-4 w-4 shrink-0" />
+            {t({
+              ar: "تم إرسال رسالتك بنجاح، وسنرد عليك في نفس اليوم.",
+              en: "Your message was sent — we'll reply the same day.",
+            })}
+          </p>
         )}
-        <input
-          id="attachment"
-          key={phoneKey}
-          type="file"
-          accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt,.zip"
-          onChange={onFile}
-          className="sr-only"
-        />
-        {fileError && <p className="mt-2 text-sm font-semibold text-red-700">{fileError}</p>}
-      </div>
-
-      <div className="mt-7 flex flex-wrap gap-3">
-        <button
-          type="submit"
-          disabled={sending}
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
-        >
-          {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-          {sending
-            ? t({ ar: "جاري الإرسال…", en: "Sending…" })
-            : t({ ar: "إرسال إلى بريدنا", en: "Send to our email" })}
-        </button>
-        <a
-          href={`${company.whatsapp}?text=${encodeURIComponent(body)}`}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-secondary"
-        >
-          <MessageCircle className="h-4 w-4" />
-          {t({ ar: "إرسال على واتساب", en: "Send on WhatsApp" })}
-        </a>
-      </div>
-
-      {status === "sent" && (
-        <p
-          role="status"
-          className="mt-5 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm font-semibold text-emerald-700"
-        >
-          <CheckCircle2 className="h-4 w-4 shrink-0" />
-          {t({
-            ar: "تم إرسال رسالتك بنجاح، وسنرد عليك في نفس اليوم.",
-            en: "Your message was sent — we'll reply the same day.",
-          })}
-        </p>
-      )}
-      {status === "error" && (
-        <p
-          role="alert"
-          className="mt-5 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-700"
-        >
-          {t({
-            ar: "تعذر إرسال الرسالة الآن. جرّب مرة أخرى أو راسلنا على واتساب.",
-            en: "We couldn't send the message right now. Please try again or reach us on WhatsApp.",
-          })}
-        </p>
-      )}
+        {status === "error" && (
+          <p
+            role="alert"
+            className="mt-5 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-700"
+          >
+            {t({
+              ar: "تعذر إرسال الرسالة الآن. جرّب مرة أخرى أو راسلنا على واتساب.",
+              en: "We couldn't send the message right now. Please try again or reach us on WhatsApp.",
+            })}
+          </p>
+        )}
       </form>
     </Reveal>
   );
@@ -393,7 +422,9 @@ function ContactPage() {
                   <summary className="cursor-pointer list-none text-sm font-semibold text-primary-foreground">
                     {t(f.q)}
                   </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{t(f.a)}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                    {t(f.a)}
+                  </p>
                 </details>
               ))}
             </div>

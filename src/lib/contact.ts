@@ -5,8 +5,8 @@ import { company, SITE_URL } from "@/content/site";
 
 // Brand assets/values reused across the emails (single source of truth).
 // The logo is referenced by its hosted URL so it does NOT show up as a file
-// attachment on the email. It loads once the site is deployed (public/ather-mark.png).
-const LOGO_URL = `${SITE_URL}/ather-mark.png`;
+// attachment on the email. It loads once the site is deployed (public/athr-mark.png).
+const LOGO_URL = `${SITE_URL}/athr-mark.png`;
 const NAVY = "#1a2440";
 const GOLD = "#d9a441";
 
@@ -47,14 +47,12 @@ function getSmtpConfig() {
   const port = Number(process.env["SMTP_PORT"] ?? "587");
   const user = process.env["SMTP_USER"];
   const pass = process.env["SMTP_PASSWORD"];
-  const displayName = process.env["SMTP_DISPLAY_NAME"] ?? "Ather Website";
+  const displayName = process.env["SMTP_DISPLAY_NAME"] ?? "Athr Website";
   // Where the contact form lands. Defaults to the sending mailbox.
   const to = process.env["CONTACT_TO"] ?? user;
 
   if (!user || !pass) {
-    throw new Error(
-      "Email is not configured on the server (missing SMTP_USER / SMTP_PASSWORD).",
-    );
+    throw new Error("Email is not configured on the server (missing SMTP_USER / SMTP_PASSWORD).");
   }
 
   return { host, port, user, pass, displayName, to: to as string };
@@ -95,17 +93,14 @@ export const sendContactEmail = createServerFn({ method: "POST" })
     const transporter = buildTransporter();
 
     const heading =
-      data.lang === "ar" ? "طلب جديد من موقع أثر" : "New request from the Ather website";
+      data.lang === "ar" ? "طلب جديد من موقع أثر" : "New request from the Athr website";
 
     const rows: Array<[string, string]> = [
       [data.lang === "ar" ? "الاسم" : "Name", data.name],
       [data.lang === "ar" ? "البريد الإلكتروني" : "Email", data.email],
       [data.lang === "ar" ? "الهاتف" : "Phone", data.phone],
       [data.lang === "ar" ? "الموضوع" : "Subject", data.subject],
-      [
-        data.lang === "ar" ? "وقت الاستلام (القاهرة)" : "Received (Cairo)",
-        cairoNow(data.lang),
-      ],
+      [data.lang === "ar" ? "وقت الاستلام (القاهرة)" : "Received (Cairo)", cairoNow(data.lang)],
     ];
 
     const text = [
@@ -138,13 +133,13 @@ export const sendContactEmail = createServerFn({ method: "POST" })
         )}</p>
       </div>`;
 
-    // 1) Notify Ather. replyTo is the visitor so a reply goes straight to them.
+    // 1) Notify Athr. replyTo is the visitor so a reply goes straight to them.
     // The visitor's optional upload is attached here.
     await transporter.sendMail({
       from: `"${displayName}" <${user}>`,
       to,
       replyTo: `"${data.name}" <${data.email}>`,
-      subject: `[Ather] ${data.subject}`,
+      subject: `[Athr] ${data.subject}`,
       text,
       html,
       attachments: data.attachment
@@ -159,16 +154,13 @@ export const sendContactEmail = createServerFn({ method: "POST" })
     });
 
     // 2) Auto-reply thank-you to the visitor. A failure here must NOT fail the
-    // whole request — the important message (to Ather) already went out.
+    // whole request — the important message (to Athr) already went out.
     try {
       await transporter.sendMail({
         from: `"${displayName}" <${user}>`,
         to: `"${data.name}" <${data.email}>`,
         replyTo: `"${displayName}" <${to}>`,
-        subject:
-          data.lang === "ar"
-            ? "شكرا لتواصلك مع أثر"
-            : "Thanks for contacting Ather",
+        subject: data.lang === "ar" ? "شكرا لتواصلك مع أثر" : "Thanks for contacting Athr",
         text: buildThankYouText(data.name, data.lang),
         html: buildThankYouHtml(data.name, data.lang, LOGO_URL),
       });
@@ -195,12 +187,12 @@ function buildThankYouText(name: string, lang: "ar" | "en"): string {
   return [
     `Hi ${name},`,
     "",
-    "Thanks for choosing Ather and reaching out. We've received your message and our team will contact you within 2 hours maximum during working hours (daily, 8:00 AM – 10:00 PM).",
+    "Thanks for choosing Athr and reaching out. We've received your message and our team will contact you within 2 hours maximum during working hours (daily, 8:00 AM – 10:00 PM).",
     "",
     `If it's urgent, message us directly on WhatsApp: ${company.whatsapp}`,
     "",
     "Best regards,",
-    "The Ather Software Solutions team",
+    "The Athr Software Solutions team",
   ].join("\n");
 }
 
@@ -225,12 +217,12 @@ function buildThankYouHtml(name: string, lang: "ar" | "en", logoSrc: string): st
       : {
           tagline: "Software Solutions",
           hi: `Hi ${safeName},`,
-          p1: "Thanks for choosing <strong>Ather</strong> and reaching out. We've received your message successfully.",
+          p1: "Thanks for choosing <strong>Athr</strong> and reaching out. We've received your message successfully.",
           badge: "Our team will contact you within 2 hours maximum",
           hours: "During working hours: daily, 8:00 AM – 10:00 PM",
           p2: "If it's urgent, message us directly on WhatsApp:",
           cta: "Chat on WhatsApp",
-          sign: "Best regards,<br>The Ather Software Solutions team",
+          sign: "Best regards,<br>The Athr Software Solutions team",
           footEmail: "Email",
           footPhone: "Phone",
         };
@@ -248,12 +240,12 @@ function buildThankYouHtml(name: string, lang: "ar" | "en", logoSrc: string): st
                 <table role="presentation" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="padding-${lang === "ar" ? "left" : "right"}:14px; vertical-align:middle;">
-                      <img src="${logoSrc}" width="52" height="52" alt="Ather"
+                      <img src="${logoSrc}" width="52" height="52" alt="Athr"
                            style="display:block; width:52px; height:52px; border:0;" />
                     </td>
                     <td style="vertical-align:middle;">
                       <div style="color:#ffffff; font-size:24px; font-weight:800; letter-spacing:0.5px; line-height:1;">
-                        ${lang === "ar" ? "أَثَر" : "Ather"}
+                        ${lang === "ar" ? "أَثَر" : "Athr"}
                       </div>
                       <div style="color:${GOLD}; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:2px; margin-top:6px;">
                         ${c.tagline}
