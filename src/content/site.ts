@@ -588,48 +588,199 @@ export const faqs: { q: Bi; a: Bi }[] = [
   },
 ];
 
-
 export const testimonials: { name: Bi; role: Bi; quote: Bi; image?: string }[] = [
   {
     name: { ar: "أحمد محمد", en: "Ahmed Mohamed" },
     role: { ar: "مؤسس متجر إلكتروني", en: "E-commerce Founder" },
     quote: {
       ar: "فريق أثر قدم لنا تجربة متجر إلكتروني استثنائية من البداية للنهاية. سرعة في التنفيذ واحترافية في التعامل.",
-      en: "The Athr team provided us with an exceptional e-commerce experience from start to finish. Fast execution and professional conduct."
-    }
+      en: "The Athr team provided us with an exceptional e-commerce experience from start to finish. Fast execution and professional conduct.",
+    },
   },
   {
     name: { ar: "سارة خالد", en: "Sarah Khaled" },
     role: { ar: "مديرة تسويق", en: "Marketing Manager" },
     quote: {
       ar: "التكامل مع زوهو وإدارة المخزون وفر علينا الكثير من الوقت والجهد. شكرا أثر!",
-      en: "The integration with Zoho and inventory management saved us a lot of time and effort. Thank you Athr!"
-    }
+      en: "The integration with Zoho and inventory management saved us a lot of time and effort. Thank you Athr!",
+    },
   },
   {
     name: { ar: "خالد عبدالله", en: "Khaled Abdullah" },
     role: { ar: "صاحب سلسلة معارض", en: "Retail Chain Owner" },
     quote: {
       ar: "أفضل استثمار قمنا به كان العمل مع فريق أثر لتطوير متجرنا ونظام المبيعات الخاص بنا.",
-      en: "The best investment we made was working with the Athr team to develop our store and sales system."
-    }
-  }
+      en: "The best investment we made was working with the Athr team to develop our store and sales system.",
+    },
+  },
 ];
 
 export const portfolio: { title: Bi; category: Bi; image: string }[] = [
   {
     title: { ar: "متجر ملابس عصري", en: "Modern Clothing Store" },
     category: { ar: "شوبيفاي", en: "Shopify" },
-    image: svcStore
+    image: svcStore,
   },
   {
     title: { ar: "منصة بيع جملة", en: "Wholesale Platform" },
     category: { ar: "تطوير خاص", en: "Custom Development" },
-    image: svcSystems
+    image: svcSystems,
   },
   {
     title: { ar: "تطبيق جوال لمطعم", en: "Restaurant Mobile App" },
     category: { ar: "تطبيقات جوال", en: "Mobile Apps" },
-    image: svcApps
-  }
+    image: svcApps,
+  },
+];
+
+// --- 12 NEW PLACEHOLDER SECTIONS DATA ---
+
+export const team: { name: Bi; role: Bi; image?: string }[] = [
+  {
+    name: { ar: "علاء مبارك", en: "Alaa Mubarak" },
+    role: { ar: "المدير التنفيذي", en: "CEO & Founder" },
+  },
+  {
+    name: { ar: "أحمد أبو الوفا", en: "Ahmed Abouelwafa" },
+    role: { ar: "المدير التنفيذي", en: "CEO & Founder" },
+  },
+  {
+    name: { ar: "مهند محمد", en: "Mohand Mohamed" },
+    role: { ar: "مصمم واجهات", en: "UI/UX Designer" },
+  },
+  {
+    name: { ar: "سارة أحمد", en: "Sarah Ahmed" },
+    role: { ar: "مديرة تسويق", en: "Marketing Manager" },
+  },
+];
+
+export const techStack: { name: string; category: Bi }[] = [
+  { name: "Angular", category: { ar: "تطوير الواجهات", en: "Frontend Development" } },
+  { name: ".NET", category: { ar: "تطوير الخلفية", en: "Backend Development" } },
+  { name: "React / Next.js", category: { ar: "تطوير الواجهات", en: "Frontend Development" } },
+  { name: "Node.js / Bun", category: { ar: "تطوير الخلفية", en: "Backend Development" } },
+  { name: "Shopify / Salla / Zid", category: { ar: "منصات المتاجر", en: "E-commerce Platforms" } },
+  { name: "Zoho Suite", category: { ar: "أنظمة الإدارة", en: "Management Systems" } },
+];
+
+export const industries: { name: Bi; icon: string }[] = [
+  { name: { ar: "التجزئة والأزياء", en: "Retail & Fashion" }, icon: "shopping-bag" },
+  { name: { ar: "الأغذية والمشروبات", en: "Food & Beverage" }, icon: "coffee" },
+  { name: { ar: "الإلكترونيات", en: "Electronics" }, icon: "cpu" },
+  { name: { ar: "الخدمات الطبية", en: "Healthcare" }, icon: "heart" },
+];
+
+export const blogPosts: { title: Bi; date: string; excerpt: Bi }[] = [
+  {
+    title: {
+      ar: "كيف تزيد مبيعات متجرك في 2024؟",
+      en: "How to increase your store sales in 2024?",
+    },
+    date: "2024-01-15",
+    excerpt: {
+      ar: "نصائح عملية لتحسين تجربة المستخدم وزيادة معدل التحويل.",
+      en: "Actionable tips to improve UX and increase conversion rate.",
+    },
+  },
+  {
+    title: { ar: "أهمية الربط مع أنظمة ERP", en: "The importance of ERP integration" },
+    date: "2024-02-02",
+    excerpt: {
+      ar: "لماذا تحتاج المتاجر الكبيرة إلى زوهو لإدارة المخزون؟",
+      en: "Why large stores need Zoho for inventory management.",
+    },
+  },
+  {
+    title: { ar: "تصميم المتاجر للجوال أولاً", en: "Mobile-first store design" },
+    date: "2024-03-10",
+    excerpt: {
+      ar: "أكثر من 80٪ من المشترين يستخدمون الجوال، كيف تستعد؟",
+      en: "Over 80% of buyers use mobile, how to prepare?",
+    },
+  },
+];
+
+export const awards: { title: Bi; year: string; organization: Bi }[] = [
+  {
+    title: { ar: "أفضل وكالة شوبيفاي", en: "Best Shopify Agency" },
+    year: "2023",
+    organization: { ar: "إيكوميرس الشرق الأوسط", en: "E-commerce ME" },
+  },
+  {
+    title: { ar: "جائزة التميز التقني", en: "Tech Excellence Award" },
+    year: "2022",
+    organization: { ar: "غرفة التجارة", en: "Chamber of Commerce" },
+  },
+];
+
+export const partners: { name: string; type: Bi }[] = [
+  { name: "Shopify Partners", type: { ar: "شريك رسمي", en: "Official Partner" } },
+  { name: "Zoho Partners", type: { ar: "شريك تقني", en: "Tech Partner" } },
+  { name: "Paymob", type: { ar: "شريك مدفوعات", en: "Payment Partner" } },
+  { name: "Aramex", type: { ar: "شريك لوجستي", en: "Logistics Partner" } },
+];
+
+export const benefits: { title: Bi; description: Bi }[] = [
+  {
+    title: { ar: "سرعة التنفيذ", en: "Fast Execution" },
+    description: {
+      ar: "نسلم مشاريعنا في وقت قياسي دون مساومة على الجودة.",
+      en: "We deliver projects in record time without compromising quality.",
+    },
+  },
+  {
+    title: { ar: "دعم فني مستمر", en: "Continuous Support" },
+    description: {
+      ar: "فريقنا معك دائماً لحل أي مشكلة تقنية.",
+      en: "Our team is always with you to solve any technical issue.",
+    },
+  },
+  {
+    title: { ar: "حلول مخصصة", en: "Custom Solutions" },
+    description: {
+      ar: "لا نستخدم قوالب جاهزة، بل نبني ما يناسب نشاطك.",
+      en: "We don't use generic templates, we build what fits your business.",
+    },
+  },
+];
+
+export const caseStudies: { title: Bi; result: Bi; metric: string }[] = [
+  {
+    title: { ar: "متجر أزياء كبير", en: "Large Fashion Store" },
+    result: { ar: "زيادة في المبيعات", en: "Increase in sales" },
+    metric: "+150%",
+  },
+  {
+    title: { ar: "شركة أجهزة إلكترونية", en: "Electronics Company" },
+    result: { ar: "تقليل تكلفة التشغيل", en: "Reduction in operations cost" },
+    metric: "-40%",
+  },
+];
+
+export const locations: { city: Bi; address: Bi }[] = [
+  {
+    city: { ar: "قنا، مصر", en: "Qena, Egypt" },
+    address: { ar: "شارع جميل", en: "Gameel Street" },
+  },
+  {
+    city: { ar: "الرياض، السعودية", en: "Riyadh, KSA" },
+    address: { ar: "قريباً", en: "Coming Soon" },
+  },
+];
+
+export const guarantees: { title: Bi; description: Bi }[] = [
+  {
+    title: { ar: "ضمان الرضا 100٪", en: "100% Satisfaction Guarantee" },
+    description: {
+      ar: "نعمل حتى تكون راضياً تماماً عن النتيجة.",
+      en: "We work until you are completely satisfied with the result.",
+    },
+  },
+  {
+    title: { ar: "ضمان الاستقرار", en: "Uptime Guarantee" },
+    description: {
+      ar: "نضمن استقرار متجرك بنسبة 99.9٪.",
+      en: "We guarantee 99.9% uptime for your store.",
+    },
+  },
 ];

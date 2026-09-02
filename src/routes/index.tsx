@@ -3,7 +3,28 @@ import { ArrowLeft, ArrowRight, Check, Clock, MessageCircle } from "lucide-react
 import heroImg from "@/assets/hero.jpg";
 import { CtaBand, PlatformMarquee, SectionHeading } from "@/components/Bits";
 import { Reveal } from "@/components/Reveal";
-import { company, faqs, process, services, SITE_URL, stats, values, testimonials, portfolio, packages } from "@/content/site";
+import {
+  company,
+  faqs,
+  process,
+  services,
+  SITE_URL,
+  stats,
+  values,
+  testimonials,
+  portfolio,
+  packages,
+  team,
+  techStack,
+  industries,
+  blogPosts,
+  awards,
+  partners,
+  benefits,
+  caseStudies,
+  locations,
+  guarantees,
+} from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -138,7 +159,7 @@ function Home() {
               title={t({ ar: "شريكك التقني للنمو", en: "Your technical partner for growth" })}
               body={t({
                 ar: "بدأنا من قنا في مصر بفكرة بسيطة: أن صاحب العمل يحتاج شريكا تقنيا يفهم البيع، لا مجرد موقع جميل. نعمل مع تجار وشركات في مصر والخليج على بناء متاجر وأنظمة تدار بسهولة وتنمو مع نشاطهم.",
-                en: "We started in Qena, Egypt with a simple idea: business owners need a tech partner who understands sales, not just pretty websites. We work with merchants across Egypt and the Gulf to build stores and systems that are easy to run and scale."
+                en: "We started in Qena, Egypt with a simple idea: business owners need a tech partner who understands sales, not just pretty websites. We work with merchants across Egypt and the Gulf to build stores and systems that are easy to run and scale.",
               })}
             />
             <Link
@@ -149,12 +170,11 @@ function Home() {
               <Arrow className="h-4 w-4" />
             </Link>
           </Reveal>
-          <Reveal delay={120} className="relative aspect-square overflow-hidden rounded-3xl md:aspect-[4/3]">
-            <img
-              src={heroImg}
-              alt="About Athr"
-              className="h-full w-full object-cover"
-            />
+          <Reveal
+            delay={120}
+            className="relative aspect-square overflow-hidden rounded-3xl md:aspect-[4/3]"
+          >
+            <img src={heroImg} alt="About Athr" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-ink/10" />
           </Reveal>
         </div>
@@ -234,10 +254,16 @@ function Home() {
           {portfolio.map((p, i) => (
             <Reveal key={p.title.en} delay={i * 60} className="surface-card group overflow-hidden">
               <div className="relative aspect-video overflow-hidden bg-muted">
-                <img src={p.image} alt={t(p.title)} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img
+                  src={p.image}
+                  alt={t(p.title)}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
               <div className="p-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-accent">{t(p.category)}</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+                  {t(p.category)}
+                </span>
                 <h3 className="mt-2 text-lg font-bold text-ink">{t(p.title)}</h3>
               </div>
             </Reveal>
@@ -323,7 +349,9 @@ function Home() {
                 key={pkg.name.en}
                 delay={i * 60}
                 className={`relative flex flex-col rounded-2xl p-6 ${
-                  pkg.best ? "bg-accent text-accent-foreground" : "border border-white/10 bg-white/5"
+                  pkg.best
+                    ? "bg-accent text-accent-foreground"
+                    : "border border-white/10 bg-white/5"
                 }`}
               >
                 {pkg.best && (
@@ -331,12 +359,18 @@ function Home() {
                     {t({ ar: "الأكثر طلبا", en: "Most Popular" })}
                   </span>
                 )}
-                <h3 className={`text-xl font-bold ${pkg.best ? "text-ink" : "text-white"}`}>{t(pkg.name)}</h3>
-                <p className={`mt-2 text-sm ${pkg.best ? "text-ink/80" : "text-white/70"}`}>{t(pkg.for)}</p>
+                <h3 className={`text-xl font-bold ${pkg.best ? "text-ink" : "text-white"}`}>
+                  {t(pkg.name)}
+                </h3>
+                <p className={`mt-2 text-sm ${pkg.best ? "text-ink/80" : "text-white/70"}`}>
+                  {t(pkg.for)}
+                </p>
                 <Link
                   to="/packages"
                   className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold transition-colors ${
-                    pkg.best ? "bg-ink text-white hover:bg-ink/90" : "bg-white/10 text-white hover:bg-white/20"
+                    pkg.best
+                      ? "bg-ink text-white hover:bg-ink/90"
+                      : "bg-white/10 text-white hover:bg-white/20"
                   }`}
                 >
                   {t({ ar: "عرض التفاصيل", en: "View details" })}
@@ -362,6 +396,249 @@ function Home() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* 1. Team */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "فريقنا", en: "Our Team" })}
+          title={t({ ar: "تعرف على الخبراء", en: "Meet the experts" })}
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-4">
+          {team.map((member, i) => (
+            <Reveal key={member.name.en} delay={i * 60} className="surface-card p-6 text-center">
+              <div className="mx-auto h-24 w-24 rounded-full bg-muted" />
+              <h3 className="mt-4 text-base font-bold text-ink">{t(member.name)}</h3>
+              <p className="text-sm text-muted-foreground">{t(member.role)}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 2. Tech Stack */}
+      <section className="ink-panel py-20">
+        <div className="container-page">
+          <SectionHeading
+            invert
+            eyebrow={t({ ar: "التقنيات", en: "Tech Stack" })}
+            title={t({ ar: "أدوات نعتمد عليها", en: "Tools we rely on" })}
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {techStack.map((tech, i) => (
+              <Reveal
+                key={tech.name}
+                delay={i * 60}
+                className="rounded-xl border border-white/10 bg-white/5 p-6 text-center text-white"
+              >
+                <h4 className="font-bold">{tech.name}</h4>
+                <p className="mt-1 text-xs text-white/70">{t(tech.category)}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Industries */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "الصناعات", en: "Industries" })}
+          title={t({ ar: "قطاعات نخدمها", en: "Sectors we serve" })}
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {industries.map((ind, i) => (
+            <Reveal key={ind.name.en} delay={i * 60} className="surface-card p-6 text-center">
+              <h4 className="text-lg font-bold text-ink">{t(ind.name)}</h4>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. Blog Posts */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "المدونة", en: "Blog" })}
+          title={t({ ar: "أحدث المقالات", en: "Latest Articles" })}
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {blogPosts.map((post, i) => (
+            <Reveal key={post.title.en} delay={i * 60} className="surface-card p-6">
+              <span className="text-xs text-accent">{post.date}</span>
+              <h3 className="mt-2 text-base font-bold text-ink">{t(post.title)}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t(post.excerpt)}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Awards */}
+      <section className="ink-panel py-20">
+        <div className="container-page text-center">
+          <SectionHeading
+            invert
+            eyebrow={t({ ar: "الجوائز", en: "Awards" })}
+            title={t({ ar: "تكريمات نفخر بها", en: "Recognitions we are proud of" })}
+          />
+          <div className="mt-12 flex flex-wrap justify-center gap-8">
+            {awards.map((award, i) => (
+              <Reveal key={award.title.en} delay={i * 60} className="text-white">
+                <h4 className="text-xl font-bold text-accent">{t(award.title)}</h4>
+                <p className="text-sm text-white/80">
+                  {award.year} - {t(award.organization)}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Partners */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "شركاؤنا", en: "Our Partners" })}
+          title={t({ ar: "نعمل مع الأفضل", en: "We work with the best" })}
+        />
+        <div className="mt-12 flex flex-wrap justify-center gap-6">
+          {partners.map((partner, i) => (
+            <Reveal
+              key={partner.name}
+              delay={i * 60}
+              className="surface-card px-8 py-4 text-center"
+            >
+              <h4 className="font-bold text-ink">{partner.name}</h4>
+              <span className="text-xs text-muted-foreground">{t(partner.type)}</span>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. Benefits */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "المميزات", en: "Benefits" })}
+          title={t({ ar: "لماذا تختار حلولنا؟", en: "Why choose our solutions?" })}
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {benefits.map((benefit, i) => (
+            <Reveal key={benefit.title.en} delay={i * 60} className="surface-card p-6">
+              <h3 className="text-lg font-bold text-ink">{t(benefit.title)}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t(benefit.description)}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 8. Case Studies */}
+      <section className="ink-panel py-20">
+        <div className="container-page">
+          <SectionHeading
+            invert
+            eyebrow={t({ ar: "دراسات حالة", en: "Case Studies" })}
+            title={t({ ar: "قصص نجاح عملائنا", en: "Our clients success stories" })}
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {caseStudies.map((study, i) => (
+              <Reveal
+                key={study.title.en}
+                delay={i * 60}
+                className="rounded-xl border border-white/10 bg-white/5 p-8 text-white"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">{t(study.title)}</h3>
+                  <span className="text-3xl font-extrabold text-accent">{study.metric}</span>
+                </div>
+                <p className="mt-2 text-white/70">{t(study.result)}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Locations */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "فروعنا", en: "Locations" })}
+          title={t({ ar: "أين تجدنا", en: "Where to find us" })}
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {locations.map((loc, i) => (
+            <Reveal key={loc.city.en} delay={i * 60} className="surface-card p-6 text-center">
+              <h3 className="text-lg font-bold text-ink">{t(loc.city)}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{t(loc.address)}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 10. Guarantees */}
+      <section className="container-page py-20">
+        <SectionHeading
+          eyebrow={t({ ar: "الضمانات", en: "Guarantees" })}
+          title={t({ ar: "وعودنا لك", en: "Our promises to you" })}
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {guarantees.map((guar, i) => (
+            <Reveal key={guar.title.en} delay={i * 60} className="surface-card p-6">
+              <h3 className="text-lg font-bold text-ink">{t(guar.title)}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t(guar.description)}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 11. Newsletter */}
+      <section className="ink-panel py-20 text-center">
+        <div className="container-page max-w-xl">
+          <Reveal>
+            <h2 className="text-3xl font-bold text-white">
+              {t({ ar: "اشترك في النشرة البريدية", en: "Subscribe to our newsletter" })}
+            </h2>
+            <p className="mt-3 text-white/70">
+              {t({
+                ar: "احصل على أحدث التحديثات والمقالات مباشرة في بريدك الإلكتروني.",
+                en: "Get the latest updates and articles directly in your inbox.",
+              })}
+            </p>
+            <form
+              className="mt-8 flex flex-col gap-3 sm:flex-row"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                type="email"
+                placeholder={t({ ar: "بريدك الإلكتروني", en: "Your email address" })}
+                className="flex-1 rounded-full px-5 py-3 text-ink outline-none"
+                required
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-accent px-7 py-3 font-bold text-accent-foreground hover:bg-accent/90"
+              >
+                {t({ ar: "اشترك الآن", en: "Subscribe Now" })}
+              </button>
+            </form>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 12. Contact Form Preview */}
+      <section className="container-page py-20 text-center">
+        <Reveal>
+          <SectionHeading
+            eyebrow={t({ ar: "تواصل معنا", en: "Contact Us" })}
+            title={t({ ar: "هل أنت مستعد للبدء؟", en: "Ready to get started?" })}
+          />
+          <p className="mt-6 text-muted-foreground">
+            {t({
+              ar: "املأ النموذج وسنتواصل معك في أقرب وقت.",
+              en: "Fill out the form and we will get back to you shortly.",
+            })}
+          </p>
+          <Link
+            to="/contact"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-8 py-4 text-sm font-bold text-white transition-transform hover:-translate-y-1"
+          >
+            {t({ ar: "اذهب إلى صفحة التواصل", en: "Go to Contact Page" })}
+          </Link>
+        </Reveal>
       </section>
 
       <CtaBand />
